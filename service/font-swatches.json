@@ -1,0 +1,218 @@
+{
+    "operations": {
+        "CreateFontSwatch": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "font1": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font2": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font3": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font4": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font5": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font6": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\", \"background-color\": \"@color-swatch4\", \"background-color-hover\": \"@color-swatch4\", \"color\": \"@color-swatch4\", \"color-hover\": \"@color-swatch4\", \"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font7": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\", \"background-color\": \"@color-swatch4\", \"background-color-hover\": \"@color-swatch4\", \"color\": \"@color-swatch4\", \"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font8": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "font9": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "mobile": {
+                    "default": "1", 
+                    "description": "Determines whether a swatch is available to mobile sites", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Template which the font swatch is used by", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the font swatch.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new font swatch.", 
+            "uri": "/font-swatches"
+        }, 
+        "DeleteFontSwatch": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "swatchRef": {
+                    "description": "Font swatch reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete font swatch with the specified reference. The delete method must be permitted by the caller.", 
+            "uri": "/font-swatches/{swatchRef}"
+        }, 
+        "GetFontSwatche": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "swatchRef": {
+                    "description": "Font swatch reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get font data for the specified swatch reference.", 
+            "uri": "/font-swatches/{swatchRef}"
+        }, 
+        "GetFontSwatches": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "mobile": {
+                    "default": "0", 
+                    "description": "Return only template for mobile", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Template which the font swatch is available", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all font swatches in the environment.", 
+            "uri": "/font-swatches"
+        }, 
+        "UpdateFontSwatch": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "font1": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font2": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font3": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font4": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font5": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font6": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\", \"background-color\": \"@color-swatch4\", \"background-color-hover\": \"@color-swatch4\", \"color\": \"@color-swatch4\", \"color-hover\": \"@color-swatch4\", \"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font7": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\", \"background-color\": \"@color-swatch4\", \"background-color-hover\": \"@color-swatch4\", \"color\": \"@color-swatch4\", \"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font8": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "font9": {
+                    "description": "JSON encoded string : {\"font-family\": \"Montserrat\",\"font-size\": \"36px\",\"font-weight\": \"inherit\",\"line-height\": \"36px\",\"color\": \"@color-swatch4\",\"letter-spacing\": \"inherit\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "mobile": {
+                    "default": "1", 
+                    "description": "Determines whether a swatch is available to mobile sites", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "swatchRef": {
+                    "description": "Font swatch reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the font swatch.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update font data with the specified swatch reference. The update method must be permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/font-swatches/{swatchRef}"
+        }
+    }
+}

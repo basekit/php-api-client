@@ -1,0 +1,258 @@
+{
+    "operations": {
+        "CreateaBrandPackageCollection": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "brandRef": {
+                    "description": "The reference to the brand.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageCollectionRef": {
+                    "description": "The reference to the package collection.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new association between brand and package collection.  This will determine which package collections are shown on the app page for a certain brand.", 
+            "uri": "/brands/{brandRef}/package-collections"
+        }, 
+        "CreateaPackageCollection": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "active": {
+                    "default": "false", 
+                    "description": "Indicates whether the package collection is active and therefore to be displayed.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Name of the package collection.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new package collection. Package Collections are for the app store page and categorise the packages into application types.", 
+            "uri": "/package-collections"
+        }, 
+        "CreateaPackageCollectionPackage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "packageCollectionRef": {
+                    "description": "The reference to the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "The reference to the package.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new association between package and package collection.  This will determine which packages belong to which package collections.", 
+            "uri": "/package-collections/{packageCollectionRef}/packages"
+        }, 
+        "DeleteaBrandPackageCollection": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "brandRef": {
+                    "description": "The ref of the brand.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a an association between brand and package collection.", 
+            "uri": "/brands/{brandRef}/package-collections/{packageCollectionRef}"
+        }, 
+        "DeleteaPackageCollection": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a specific package collection.  This will check any associations with brands and packages, these will need to be removed first.", 
+            "uri": "/package-collections/{packageCollectionRef}"
+        }, 
+        "DeleteaPackageCollectionPackage": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "The ref of the package.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a an association between package and package collection.", 
+            "uri": "/package-collections/{packageCollectionRef}/packages/{packageRef}"
+        }, 
+        "GetBrandsPackageCollections": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "The reference to the brand.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "locale": {
+                    "default": "en", 
+                    "description": "For formatting the lowest prices of the collections", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "showInactive": {
+                    "default": "true", 
+                    "description": "Whether or not to return inactive package collections.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all package collections for a specific brand.", 
+            "uri": "/brands/{brandRef}/package-collections"
+        }, 
+        "GetPackageCollection": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific package collection.", 
+            "uri": "/package-collections/{packageCollectionRef}"
+        }, 
+        "GetPackageCollections": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "showInactive": {
+                    "default": "false", 
+                    "description": "Indicates whether to return the inactive package collections.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of package all collections.", 
+            "uri": "/package-collections"
+        }, 
+        "GetPackageCollectionsPackages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageCollectionRef": {
+                    "description": "The reference to the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "showInactive": {
+                    "default": "false", 
+                    "description": "Indicates whether to return the inactive package collections.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all packages for a specific package collection.", 
+            "uri": "/package-collections/{packageCollectionRef}/packages"
+        }, 
+        "UpdateaBrandPackageCollection": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "brandRef": {
+                    "description": "The ref of the brand.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "displayOrder": {
+                    "description": "Order in which to display package, setting to 999 will reset.  If setting to 1, it will push forward (increment the order) on all other brand packages.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Updates the display order on a branded package collection.", 
+            "uri": "/brands/{brandRef}/package-collections/{packageCollectionRef}"
+        }, 
+        "UpdateaPackageCollection": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "active": {
+                    "default": "false", 
+                    "description": "Indicates whether the package collection is active and therefore to be displayed.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Name of the package collection.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "packageCollectionRef": {
+                    "description": "The ref of the package collection.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a specific package collection.", 
+            "uri": "/package-collections/{packageCollectionRef}"
+        }
+    }
+}

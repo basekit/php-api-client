@@ -1,0 +1,258 @@
+{
+    "operations": {
+        "CreateOrderItem": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "billingPeriodMonths": {
+                    "description": "Billing period to select (where pricing is available).", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "domainName": {
+                    "description": "Domain name to use (where package is a domain type).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "isFree": {
+                    "description": "Indicates whether the item should be free.", 
+                    "enum": [
+                        1, 
+                        0
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "orderRef": {
+                    "description": "Order ID to lookup.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "packageRef": {
+                    "description": "Package ref to add as order item.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "registrationDuration": {
+                    "description": "Number of years to register for (checked against min registration period).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a new order item item to a specific order by order ID", 
+            "uri": "/orders/{orderRef}/items"
+        }, 
+        "CreateOrder": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "AccountHolderRef to create the order for.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "metricsPath": {
+                    "description": "How the user got to where the order was created", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "metricsSource": {
+                    "default": "uhohdocs", 
+                    "description": "Where the order was created", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "discountCode": {
+                    "description": "Discount code string.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create an empty order (basket) for a specified accountholder", 
+            "uri": "/orders"
+        }, 
+        "DeleteOrderItem": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "orderItemRef": {
+                    "description": "Order item ID to remove from its matching order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "Order ID to update with order items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove a specific order item from an existing order", 
+            "uri": "/orders/{orderRef}/items/{orderItemRef}"
+        }, 
+        "Deleteorder": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "orderRef": {
+                    "description": "orderRef to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete an order by orderRef", 
+            "uri": "/orders/{orderRef}"
+        }, 
+        "GetOrder": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderRef": {
+                    "description": "Order ID to lookup.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return a specific order by order ID", 
+            "uri": "/orders/{orderRef}"
+        }, 
+        "GetOrders": {
+            "httpMethod": "GET", 
+            "summary": "Show all orders in scope", 
+            "uri": "/orders"
+        }, 
+        "GetOrdersItems": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderRef": {
+                    "description": "Order ref to lookup.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all items attached to a specific order by order ref. Prices are in currency belonging to account holder on the order.", 
+            "uri": "/orders/{orderRef}/items"
+        }, 
+        "Updateorder": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "completionStatus": {
+                    "description": "Order completion status", 
+                    "enum": [
+                        "cancelled", 
+                        "expired", 
+                        "failed", 
+                        "success"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "orderRef": {
+                    "description": "orderRef to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paymentStatus": {
+                    "description": "Order payment status", 
+                    "enum": [
+                        "failed", 
+                        "success"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "state": {
+                    "description": "Order state", 
+                    "enum": [
+                        "fulfillment", 
+                        "complete"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "removeDiscount": {
+                    "description": "Boolean to remove a discount from order or not", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update some order states and statuses.", 
+            "uri": "/orders/{orderRef}"
+        }, 
+        "Updateorderitem": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "orderItemRef": {
+                    "description": "Order item ID to update from its matching order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "orderRef to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "status": {
+                    "description": "Order item status", 
+                    "enum": [
+                        "pending", 
+                        "failed", 
+                        "success", 
+                        "cancelled", 
+                        "expired"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update order item status.", 
+            "uri": "/orders/{orderRef}/items/{orderItemRef}"
+        },
+        "GetOrdersDomains": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderState": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "sortBy": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortOrder": {
+                    "description": "", 
+                    "enum": [
+                        "ASC", 
+                        "DESC" 
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "", 
+            "uri": "/orders/domains"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "operations": {
+        "GetUserDomainsMailboxes": {
+            "uri": "/users/{accountHolderRef}/domains/mailboxes",
+            "httpMethod": "GET", 
+            "summary": "Check if the specified domain is available to be registered.",
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }
+            }
+        } 
+    }
+}

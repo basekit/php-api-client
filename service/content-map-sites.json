@@ -1,0 +1,289 @@
+{
+    "operations": {
+        "AddContentMapSiteCategories": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category reference to be associated with content map site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "contentMapSiteRef": {
+                    "description": "Content map site reference to associate.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a category to a content map site. The content map site must be accessible and the post method permitted by the caller.", 
+            "uri": "/content-map-sites/{contentMapSiteRef}/categories"
+        }, 
+        "CreateContentMapSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "author": {
+                    "description": "Author of the content map site site. This eventually should be changed to be a user reference.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "businessTypeRef": {
+                    "description": "Business type reference for the content map site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "Brief description of the content map site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "default": "en", 
+                    "description": "Language used in the content map site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference on which to base the content map site. A snapshot of this site’s data is stored, from which new sites can be created.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Mobile template ref.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "tier": {
+                    "description": "The content map site tier. Usually a small int between 1 and 5.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the content map site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new content map site based on the specified site. The content map site will initially be presented to the system owner, after which it can be published and allocated to individual brands.", 
+            "uri": "/content-map-sites"
+        }, 
+        "DeleteContentMapSiteCategories": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category reference to be removed.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "contentMapSiteRef": {
+                    "description": "Content map site reference to remove.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove a category associated with a content map site. The content map site must be accessible and the delete method permitted by the caller.", 
+            "uri": "/content-map-sites/{contentMapSiteRef}/categories/{categoryRef}"
+        }, 
+        "GetContentMapSite": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "contentMapSiteRef": {
+                    "description": "Content map site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get content map site data for the specified content map site reference. The content map site must be accessible by the caller.", 
+            "uri": "/content-map-sites/{contentMapSiteRef}"
+        }, 
+        "GetContentMapSites": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "blueprint": {
+                    "description": "Only return blueprint content map sites.", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "contentMapSiteCategory": {
+                    "description": "Filter by the specified content map site category.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "contentMapSiteCategoryRef": {
+                    "description": "Filter by the specified content map site category ref.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "enabled": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string",
+                    "enum": [
+                        "0",
+                        "1"
+                    ]
+                }, 
+                "languageRef": {
+                    "description": "Filter by the specified language ref.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "numeric"
+                }, 
+                "search": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortBy": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortOrder": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ]
+                }, 
+                "tag": {
+                    "description": "Filter by the specified tag.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "templateRef": {
+                    "description": "Return associated content map site to this mobile template ref.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "themeCategory": {
+                    "description": "Filter by the specified theme category tag.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "themeCategoryRef": {
+                    "description": "Filter by the specified theme category ref.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all available content map sites, optionally filtering by one of several variables. Note that only one variable may be used at a time.", 
+            "uri": "/content-map-sites"
+        }, 
+        "GetContentMapSitesCategories": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "contentMapSiteRef": {
+                    "description": "Content map site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all categories associated with a content map site. The content map site must be accessible and the get method permitted by the caller.", 
+            "uri": "/content-map-sites/{contentMapSiteRef}/categories"
+        }, 
+        "GetContentMapSitesTags": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand to filter by", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "languageRef": {
+                    "description": "Language to filter by", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "List all tags associated with content map sites on a specific brand and language", 
+            "uri": "/content-map-sites/tags"
+        }, 
+        "UpdateContentMapSite": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "author": {
+                    "description": "Author of the content map site site. This eventually should be changed to be a user reference.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "businessTypeRef": {
+                    "description": "Business type reference for the content map site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "contentMapSiteRef": {
+                    "description": "Content map site reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "Brief description of the content map site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageRef": {
+                    "description": "Language used in the content map site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Mobile template ref.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": ["integer", "null"]
+                }, 
+                "tier": {
+                    "description": "The content map site tier. Usually a small int between 1 and 5.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the content map site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update content map site with the specified content map site reference. The content map site must be accessible and the update method permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/content-map-sites/{contentMapSiteRef}"
+        }
+    }
+}

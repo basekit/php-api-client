@@ -1,0 +1,237 @@
+{
+    "operations": {
+        "Createacustomer": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to create the new customer", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "address1": {
+                    "description": "Address1 of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "address2": {
+                    "description": "Address2 of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "address3": {
+                    "description": "Address3 of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "city": {
+                    "description": "City of the new customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "country": {
+                    "description": "Country of the new customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "email": {
+                    "description": "Email of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "Firstname of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "description": "Language code of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "LastName of the new customer", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "phoneNumber": {
+                    "description": "Phone number of the new customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "postcode": {
+                    "description": "Postcode of the new customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site ref where the customer comes from", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "state": {
+                    "description": "State of the new customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new customer for an Account holder", 
+            "uri": "/users/{accountHolderRef}/customers"
+        }, 
+        "Deletecustomer": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to retrieve the list of customer", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "customerRef": {
+                    "description": "Customer ref to delete", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a customer", 
+            "uri": "/users/{accountHolderRef}/customers/{customerRef}"
+        }, 
+        "GetUsersCustomer": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to retrieve the list of customer", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "customerRef": {
+                    "description": "Customer ref to retreive informations from", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get informations of a customer", 
+            "uri": "/users/{accountHolderRef}/customers/{customerRef}"
+        }, 
+        "GetUsersCustomers": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to retrieve the list of customer", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of customer for an AccountHolder", 
+            "uri": "/users/{accountHolderRef}/customers"
+        }, 
+        "Updatecustomer": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to retrieve the list of customer", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "address1": {
+                    "description": "Address1 of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "address2": {
+                    "description": "Address2 of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "address3": {
+                    "description": "Address3 of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "city": {
+                    "description": "City of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "country": {
+                    "description": "Country of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "customerRef": {
+                    "description": "Customer ref to update informations", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "email": {
+                    "description": "Email of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "Firstname of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "description": "Language code of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "LastName of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "phoneNumber": {
+                    "description": "Phone number of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "postcode": {
+                    "description": "Postcode of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "state": {
+                    "description": "State of the customer", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update informations of a customer", 
+            "uri": "/users/{accountHolderRef}/customers/{customerRef}"
+        }
+    }
+}

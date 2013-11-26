@@ -1,0 +1,130 @@
+{
+    "operations": {
+        "CreateTheme": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "categories": {
+                    "description": "An array of categorie references to represent this theme. These are passed in one at a time as follows: categories[]=1&categories[]=2&categories[]=3.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "array"
+                }, 
+                "colorSwatchRef": {
+                    "description": "Default color swatch reference to be used by this theme.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "family": {
+                    "description": "Visual family for the theme. This is for internal use only, and is ignored for all roles except Internal Developer.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "fontSwatchRef": {
+                    "description": "Default font swatch reference to be used by this theme.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Name of the theme.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "shared": {
+                    "description": "Indicate whether this theme should be shared by all users.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new theme.", 
+            "uri": "/themes"
+        }, 
+        "DeleteTheme": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "themeRef": {
+                    "description": "Theme reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete theme with the specified theme reference. The theme must be accessible and the delete method permitted by the caller.", 
+            "uri": "/themes/{themeRef}"
+        }, 
+        "GetTheme": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "themeRef": {
+                    "description": "Theme reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get theme data for the specified theme reference. The theme must be accessible by the caller.", 
+            "uri": "/themes/{themeRef}"
+        }, 
+        "UpdateTheme": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "categories": {
+                    "description": "An array of categorie references to represent this theme. These are passed in one at a time as follows: categories[]=1&categories[]=2&categories[]=3.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "array"
+                }, 
+                "colorSwatchRef": {
+                    "description": "Default color swatch reference to be used by this theme.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "family": {
+                    "description": "Visual family for the theme. This is for internal use only, and is ignored for all roles except Internal Developer.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "fontSwatchRef": {
+                    "description": "Default font swatch reference to be used by this theme.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Name of the theme.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "shared": {
+                    "description": "Indicate whether this theme should be shared by all users.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "themeRef": {
+                    "description": "Theme reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update theme with the specified theme reference. The theme must be accessible and the update method permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/themes/{themeRef}"
+        }
+    }
+}

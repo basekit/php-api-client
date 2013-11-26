@@ -1,0 +1,66 @@
+{
+    "operations": {
+        "APSLogin": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User being logged in", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "consumerKey": {
+                    "description": "OAuth consumer key of role being logged in", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "hash": {
+                    "description": "SHA1 hash of OAuth access secret, siteRef, and salt", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site being logged into", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Login via APS", 
+            "uri": "/aps-login"
+        }, 
+        "Login": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "password": {
+                    "description": "Password of user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "userType": {
+                    "description": "Type of user.", 
+                    "enum": [
+                        "accountHolder", 
+                        "controlPanel", 
+                        "API",
+                        "reseller"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "username": {
+                    "description": "Username of user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Login to the API with a username and password. This can be used to login as an account holder or control panel user.", 
+            "uri": "/login"
+        }
+    }
+}

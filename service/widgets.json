@@ -1,0 +1,340 @@
+{
+    "operations": {
+        "AddTemplateWidget": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "name": {
+                    "description": "New template widget name.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to create template widget on.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a new blank template widget", 
+            "uri": "/sites/{siteRef}/template-widgets"
+        }, 
+        "Addwidget": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "collection": {
+                    "description": "Collection name (widgets).", 
+                    "enum": [
+                        "columns", 
+                        "widgets", 
+                        "controls"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "data": {
+                    "description": "Optional widget data for setup.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "libraryItemRef": {
+                    "default": 0, 
+                    "description": "Library item reference for adding widget. If it’s not set need to use pageRef.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Widget name.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "pageRef": {
+                    "default": 0, 
+                    "description": "Page reference for adding widget. If it’s not set need to use libraryItemRef.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "parentId": {
+                    "description": "Parent element id to which will added widget.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "position": {
+                    "default": 0, 
+                    "description": "Position in the list.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Widget type (e.g. Widget.Image)", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "value": {
+                    "description": "Optional widget values for setup (JSON Encoded key => value).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a widget to a page", 
+            "uri": "/sites/{siteRef}/widgets"
+        }, 
+        "DeleteTemplateWidget": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "widgetRef": {
+                    "description": "Widget reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete the widget with the specified reference", 
+            "uri": "/sites/{siteRef}/template-widgets/{widgetRef}"
+        }, 
+        "DeleteWidget": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "widgetRef": {
+                    "description": "Widget reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete the widget with the specified reference", 
+            "uri": "/sites/{siteRef}/widgets/{widgetRef}"
+        }, 
+        "GetSitesTemplateWidgets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all the template widgets in a site", 
+            "uri": "/sites/{siteRef}/template-widgets"
+        }, 
+        "GetSitesWidget": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "widgetRef": {
+                    "description": "Widget reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get widget data for a specified widget reference", 
+            "uri": "/sites/{siteRef}/widgets/{widgetRef}"
+        }, 
+        "GetSitesWidgets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to retrive page.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all page widgets", 
+            "uri": "/sites/{siteRef}/widgets"
+        }, 
+        "SubmitWidget": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "emailFrom": {
+                    "description": "The email address of the user submitting the widget", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "message": {
+                    "description": "The text body of the submission", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The site on which the widget is displayed", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "formTitle": {
+                    "description": "",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "useProfile": {
+                    "description": "Whether to use the site’s profile data or the widget’s data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "widgetRef": {
+                    "description": "The widget being submitted", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Send a submission to the widget from the user", 
+            "uri": "/sites/{siteRef}/widgets/{widgetRef}/submissions"
+        }, 
+        "UpdateTemplateWidget": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "name": {
+                    "description": "New template widget name.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to create template widget on.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateWidgetRef": {
+                    "description": "Template Widget reference to create template widget on.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update title of an existing template widget", 
+            "uri": "/sites/{siteRef}/template-widgets/{templateWidgetRef}"
+        }, 
+        "UpdateWidget": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "collection": {
+                    "description": "Collection name (widgets).", 
+                    "enum": [
+                        "columns", 
+                        "widgets", 
+                        "controls"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "data": {
+                    "description": "Optional widget data for setup.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "libraryItemRef": {
+                    "default": 0, 
+                    "description": "Library item reference for adding widget. If it’s not set need to use pageRef.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Widget name.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "pageRef": {
+                    "default": 0, 
+                    "description": "Page reference for adding widget. If it’s not set need to use libraryItemRef.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "parentId": {
+                    "description": "Parent element id to which will added widget.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "position": {
+                    "default": 0, 
+                    "description": "Position in the list.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to retrive site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Widget type (e.g. Widget.Image)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "values": {
+                    "description": "Optional widget values for setup (JSON Encoded key => value).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "widgetRef": {
+                    "description": "Widget reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a widget’s properties. Only properties that are specified will be changed.", 
+            "uri": "/sites/{siteRef}/widgets/{widgetRef}"
+        }
+    }
+}

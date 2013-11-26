@@ -1,0 +1,87 @@
+{
+    "operations": {
+        "CreateProfile": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference profile to be created.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new profile for an user.", 
+            "uri": "/users/{userRef}/profiles"
+        }, 
+        "DeleteProfile": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "profileRef": {
+                    "description": "Profile reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference profiles to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete profile with the specified reference. The delete method must be permitted by the caller.", 
+            "uri": "/users/{userRef}/profiles/{profileRef}"
+        }, 
+        "GetUsersProfile": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "profileRef": {
+                    "description": "Profile reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference profiles to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get profile data for the specified profile.", 
+            "uri": "/users/{userRef}/profiles/{profileRef}"
+        }, 
+        "GetUsersProfiles": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference profiles to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all user profiles.", 
+            "uri": "/users/{userRef}/profiles"
+        }, 
+        "UpdateProfile": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "profileRef": {
+                    "description": "Profile reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference profiles to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update profile data with the specified profile reference. The update method must be permitted by the caller.", 
+            "uri": "/users/{userRef}/profiles/{profileRef}"
+        }
+    }
+}

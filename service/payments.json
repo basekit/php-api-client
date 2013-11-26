@@ -1,0 +1,238 @@
+{
+    "operations": {
+        "Cancelabillingcycle": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "default": 0, 
+                    "description": "The account holder to check the billing cycle against.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "billingCycleRef": {
+                    "default": 0, 
+                    "description": "Billing cycle to cancel.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "deletePackages": {
+                    "default": 0, 
+                    "description": "Whether to remove the users’ account packages linked to the given billing cycle", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "metricsPath": {
+                    "description": "The path taken to reach the metricsSource", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "metricsSource": {
+                    "description": "The source of the cancellation, e.g. ‘controlpanel’", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Cancel a billing cycle, remove all account packages, cancel payment (if auto recurring) and add default package to account", 
+            "uri": "/users/{accountHolderRef}/billing-cycles/{billingCycleRef}"
+        }, 
+        "Cancelapendingpayment": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "default": 0, 
+                    "description": "The account holder to check the payment against.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paymentRef": {
+                    "default": 0, 
+                    "description": "Payment ref to cancel.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Cancel a pending payment, order(s) and all associated order items", 
+            "uri": "/users/{accountHolderRef}/payments"
+        }, 
+        "Createabillingcycle": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder ref to add the billing cycle for", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountPackageArray[one]": {
+                    "description": "Element 1 of Array of account packages to add the new billing cycle to", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "accountPackageArray[three]": {
+                    "description": "Element 3 of Array of account packages to add the new billing cycle to", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "accountPackageArray[two]": {
+                    "description": "Element 2 of Array of account packages to add the new billing cycle to", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "accountPaymentMethodRef": {
+                    "description": "Account Payment Method to be used, leave blank to create new dummy payment method", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "expiryDate": {
+                    "description": "Expiry date must be in the future dd/mm/yy", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "periodMonths": {
+                    "description": "The billing period in months", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new billing cycle for an account holder", 
+            "uri": "/billing-cycles"
+        }, 
+        "GetUsersNrt": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User ref to check for any NRT outstanding.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Check that there are any outstanding NRT payments due for a user ", 
+            "uri": "/users/{accountHolderRef}/nrt"
+        }, 
+        "Payabillingcycle": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountPaymentMethodRef": {
+                    "default": 0, 
+                    "description": "Pay the billing cycle with another existing account payment method.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "billingCycleRef": {
+                    "description": "Billing cycle to renew.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paymentMethodRef": {
+                    "default": 0, 
+                    "description": "Pay the billing cycle with a new payment method.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Manual payment of a billing cycle renewal.", 
+            "uri": "/billing-cycles/{billingCycleRef}/pay"
+        }, 
+        "Payanorder": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountPaymentMethodRef": {
+                    "description": "Account Payment method to automatically create the payment transaction and then redirect with status of transaction to the redirect URL.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "Order ref to retrieve order details for creating the payment.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paymentMethodRef": {
+                    "description": "Payment method to create the payment transaction (from basekit_payment_method table).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "redirectURL": {
+                    "description": "Location provided by Payment Provider to redirect user to after successful payment", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User ref to check the order against.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Creates a payment transaction entry and associated payment items from the information in the order and order items tables.  A payment method OR account payment method ref must be passed in so that the relevant payment provider information is set up and passed back in the return.  The order must belong to the account holder.", 
+            "uri": "/users/{userRef}/orders/{orderRef}/pay"
+        },
+        "Updateabillingcycle": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountPaymentMethodRef": {
+                    "description": "The ref of the account payment method to use against the billing cycle. This can also be set to ‘dummy’ to create a new payment method.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "billingCycleRef": {
+                    "description": "Billing cycle to update.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "expiryDate": {
+                    "description": "The date to set the expiry to in the format dd/mm/yyyy.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "extendBillingCycle": {
+                    "description": "To indicate whether the billing cycle expiry date is to be updated.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "extendBy": {
+                    "description": "The period of months to extend the billing cycle expiry date, 1 or 12.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "periodMonths": {
+                    "description": "The new billing period months.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a billing cycle with either billingPeriodMonths, expiry date OR account payment method.", 
+            "uri": "/billing-cycles/{billingCycleRef}"
+        }
+    }
+}

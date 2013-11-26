@@ -1,0 +1,104 @@
+{
+    "operations": {
+        "GetDomain": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Specify a Brand to affect the order of TLDs", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "domain": {
+                    "description": "Domain to be checked excluding www and subdomain e.g. domain-name.ext. If TLD is specified, the exact domain name is checked, otherwise all TLDs will be applied and checked", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "limit": {
+                    "description": "Get first N results. By default this limit is not applied", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Check if the specified domain is available to be registered.", 
+            "uri": "/domains/{domain}"
+        }, 
+        "GetDomainsSuggest": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "hostName": {
+                    "description": "Host name (domain + TLD), excluding ‘www’ and subdomain. Example: server.com", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "limit": {
+                    "description": "Maximum number of results", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of suggested domains that are similar to the specified domain and are available to be registered.", 
+            "uri": "/domains/{hostName}/suggest"
+        }, 
+        "GetDomainsTransfer": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Valid account domain", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get status parameters of whether a transfer request can be sent.", 
+            "uri": "/domains/{accountDomainRef}/transfer"
+        }, 
+        "Removeasitelockassociation": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Valid account domain", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountHolderRef": {
+                    "description": "Valid account holder", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove a site lock association from an account domain", 
+            "uri": "/users/{accountHolderRef}/domains/{accountDomainRef}/site-lock/login-urls"
+        }, 
+        "Senddomaintransferrequest": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Valid account domain", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "rejectErrors": {
+                    "default": "true", 
+                    "description": "Whether to reject recoverable errors", 
+                    "enum": [
+                        "true", 
+                        "false"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Send transfer for a registered domain, log status and update renewal accordingly.", 
+            "uri": "/domains/{accountDomainRef}/transfer"
+        }
+    }
+}

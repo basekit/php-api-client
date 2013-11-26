@@ -1,0 +1,42 @@
+{
+    "operations": {
+        "GetStockImage": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "stockRef": {
+                    "description": "The reference of the image upon which to search", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get detail on a given image", 
+            "uri": "/stock-images/{stockRef}"
+        }, 
+        "GetStockImages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "count": {
+                    "description": "The number of items to be returned", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "offset": {
+                    "description": "The offset number of where the search should start from, to be used for pagination", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "search": {
+                    "description": "The search term criteria", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get images based on a certain search criteria", 
+            "uri": "/stock-images"
+        }
+    }
+}

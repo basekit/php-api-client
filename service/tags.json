@@ -1,0 +1,30 @@
+{
+    "operations": {
+        "Createtag": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "tagValue": {
+                    "description": "Tag to create. If multiple words are added, combinations of said words are added as tags separately", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a tag", 
+            "uri": "/tags"
+        }, 
+        "GetTags": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "tagValue": {
+                    "description": "Freetext to search against tags with.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "List all tags", 
+            "uri": "/tags"
+        }
+    }
+}

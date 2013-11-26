@@ -1,0 +1,151 @@
+{
+    "operations": {
+        "Addwidgettopage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to retrieve page.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to retrieve site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a widget to a page", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/widgets"
+        }, 
+        "ClonePage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "bodyscript": {
+                    "description": "Body Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "folder": {
+                    "description": "Ref of the folder type page to move the page into. Provide 0 if you want to move the page to root level.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "headscript": {
+                    "description": "Head Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "keywords": {
+                    "description": "Keywords of the page, separated by a comma", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "menu": {
+                    "default": true, 
+                    "description": "Controls the menu visibility for the cloned page when publishing a site", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "pageRef": {
+                    "description": "Page reference to clone.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "pageUrl": {
+                    "description": "Unique site root relative path to respond with this page.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "seo_title": {
+                    "description": "Seo title of the page", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to clone page from.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "status": {
+                    "default": "active", 
+                    "description": "Controls the cloned page visibility when publishing a site", 
+                    "enum": [
+                        "active", 
+                        "draft", 
+                        "inactive"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "title": {
+                    "description": "Gives the page a valid title element (defaults to existing page title)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Copy a page and its widgets to a new page", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/clone"
+        }, 
+        "GetSitesPagesWidgets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to retrieve page.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to retrieve site.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all page widgets", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/widgets"
+        },
+        "AddPageRoute": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "pageRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "route": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a page route", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/routes"
+        }
+    }
+}

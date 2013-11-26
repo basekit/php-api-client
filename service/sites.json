@@ -1,0 +1,1418 @@
+{
+    "operations": {
+        "Addaccountholdertosite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to add to site", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site to which to add account holder", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an account holder to a site", 
+            "uri": "/sites/{siteRef}/account-holders"
+        }, 
+        "CheckCNAME": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "cname": {
+                    "description": "The CNAME to check.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Check if an externally managed CNAME resolves to BaseKit infrastructure.", 
+            "uri": "/sites/checkcname"
+        }, 
+        "CreateSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to be associated with the site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "activationStatus": {
+                    "description": "Optionally set for sites on brands that use the brand activationURL.", 
+                    "enum": [
+                        "active", 
+                        "inactive"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "brandRef": {
+                    "description": "Brand under which the site is to be created.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "resellerRef": {
+                    "description": "Reseller who owns the site",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "contentMapSiteRef": {
+                    "description": "If a contentMapSiteRef(template) is supplied then that template will be applied to the site immediately after creation.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "createDemoDomain": {
+                    "description": "Boolean value if need to create demo site. 0 or 1 allowed", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "databaseRef": {
+                    "description": "Database ref on which to read and write for the new site", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "domain": {
+                    "description": "Domain to be mapped to the new site. Required if createDemoDomain is false. Typically this is a subdomain of the environment’s domain (e.g. subdomain.basekit.com), but it may be a custom domain. Note that the DNS of the domain needs to be mapped to the environment and fully propagated for the domain to be functional.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteType": {
+                    "description": "Type of site to create", 
+                    "enum": [
+                        "desktop", 
+                        "responsive"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "queueCreation": {
+                    "description": "Queue site creation completion. Will not have any effect if site creation queueing is not enabled on the environment.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new site", 
+            "uri": "/sites"
+        }, 
+        "CreateSitepage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "bodyscript": {
+                    "description": "Body Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "colorSwatchRef": {
+                    "description": "Color Swatch", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "Description of the page", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "folder": {
+                    "description": "Ref of the folder type page to move the page into. Provide 0 if you want to move the page to root level.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "fontSwatchRef": {
+                    "description": "Font Swatch", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "headscript": {
+                    "description": "Head Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "keywords": {
+                    "description": "Keywords of the page, separated by a comma", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "menu": {
+                    "default": true, 
+                    "description": "Controls the menu visibility for the cloned page when publishing a site", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "pageUrl": {
+                    "description": "Page URL", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "seo_title": {
+                    "description": "Seo title of the page", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "status": {
+                    "default": "active", 
+                    "description": "Controls the page visibility when publishing a site", 
+                    "enum": [
+                        "active", 
+                        "draft", 
+                        "inactive"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "templateType": {
+                    "description": "The template type of the page being created", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "themeRef": {
+                    "description": "Theme", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the page", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "default": "page", 
+                    "description": "The type of page to be created", 
+                    "enum": [
+                        "page", 
+                        "error-page", 
+                        "index", 
+                        "home", 
+                        "error-404", 
+                        "list", 
+                        "single"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a site page", 
+            "uri": "/sites/{siteRef}/pages"
+        }, 
+        "CreateaMobileSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to be associated with the site.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Brand under which the site is to be created.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "databaseRef": {
+                    "description": "Database ref on which to read and write for the new site", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "desktopSiteRef": {
+                    "description": "The parent desktop site ref.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new mobile site. ", 
+            "uri": "/mobile-sites"
+        }, 
+        "CreateauserforaSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "email": {
+                    "description": "Email of the user to be created.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "First name of the user to be created.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "description": "Language code for this user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "Last name of the user to be created.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "password": {
+                    "description": "Password of the user to be created.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "role": {
+                    "description": "Role should be a ref of a user group.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be used.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "username": {
+                    "description": "Site reference to be used.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a user for a Site. Role can also be designated.", 
+            "uri": "/sites/{siteRef}/users"
+        }, 
+        "Createredirect": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "externalUrl": {
+                    "description": "You have to provide the ‘redirection’ parameter or the ‘externalUrl’ parameter. externalUrl can be used with or without http:// prefix.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "redirection": {
+                    "description": "URI of the page to be redirected to (without forward slash). The URI must be a valid page and must be of type ‘page’,‘error-page’,‘index’,‘home’,‘error-404’,‘single’ in order for the update to work.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "request": {
+                    "description": "The request URI to be redirected (without forward slash). The request must be unique. ", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "default": "redirect", 
+                    "description": "The type of redirect to be created", 
+                    "enum": [
+                        "redirect", 
+                        "tempredirect"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a redirect for a site", 
+            "uri": "/sites/{siteRef}/pages"
+        }, 
+        "DeleteSite": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "hard": {
+                    "default": 0, 
+                    "description": "Hard delete a site if set to 1", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be soft deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Soft delete the site. The site is only marked as deleted.", 
+            "uri": "/sites/{siteRef}"
+        }, 
+        "DeleteSitepage/redirect/folder": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to be deleted. If a folder is provided, all child pages will be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a page or a redirect or a folder from a site", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        }, 
+        "DeleteaSiteuser": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference from where to delete the user.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User ref to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a user from a site.", 
+            "uri": "/sites/{siteRef}/users/{userRef}"
+        }, 
+        "GetMobileTheme": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "themeRef": {
+                    "description": "Theme", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove an account holder from a site", 
+            "uri": "/mobile-themes/{themeRef}"
+        }, 
+        "GetSite": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get site data for the specified site reference. The site must be accessible by the caller.", 
+            "uri": "/sites/{siteRef}"
+        }, 
+        "GetSites": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "deleted": {
+                    "default": 0, 
+                    "description": "Lists the deleted sites also.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "domain": {
+                    "description": "If the domain parameter is provided, the list of sites will be filtered to that keyword", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "brandRef": {
+                    "description": "If the brandRef parameter is provided, the list of sites will be filtered bu this brand only", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                },
+                "embed": {
+                    "description": "Embed the account holder entity into each site by passing 'accountHolder'.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of all sites in the caller’s scope. For an Internal Developer, this will list all sites in the environment.", 
+            "uri": "/sites"
+        }, 
+        "GetSitesAccountHolders": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site for which to list account holders", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of account holders associated with a site", 
+            "uri": "/sites/{siteRef}/account-holders"
+        }, 
+        "GetSitesAssets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "deleted": {
+                    "default": 0, 
+                    "description": "Whether to return only deleted files (1) or all files regardless of deleted status (0). If param is not set, only non-deleted files are returned by default", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tag": {
+                    "description": "Text tag(s) to search within assets", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "File type filter to apply (images | files | media)", 
+                    "enum": [
+                        "files", 
+                        "images", 
+                        "media"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of assets for a specified site, optionally filtered by tag or type", 
+            "uri": "/sites/{siteRef}/assets"
+        }, 
+        "GetSitesDomains": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "List domains for this site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List the domains mapped to the site. The site must be accessible by the caller.", 
+            "uri": "/sites/{siteRef}/domains"
+        }, 
+        "GetSitesGlobalValues": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Retrieve global values for this siteRef", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "List global values associated with a site", 
+            "uri": "/sites/{siteRef}/global-values"
+        }, 
+        "GetSitesPage": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all data about a site page.", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        }, 
+        "GetSitesPages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "display": {
+                    "default": "flat", 
+                    "description": "Should the pages be displayed as a tree/flat?", 
+                    "enum": [
+                        "tree", 
+                        "flat"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "default": "all", 
+                    "description": "Type of pages to be displayed. Can be: page/redirect/all", 
+                    "enum": [
+                        "page", 
+                        "redirect", 
+                        "all"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of all pages in the specified site. The site must be accessible by the caller.", 
+            "uri": "/sites/{siteRef}/pages"
+        }, 
+        "GetSitesPagesWidgetsExtractable": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "pageRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Retrieves extractable widgets for a page.", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/widgets/extractable"
+        }, 
+        "GetSitesPublishable": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be checked.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Check whether a site is publishable, this will return an array of information about state.", 
+            "uri": "/sites/{siteRef}/publishable"
+        }, 
+        "GetSitesStaticValue": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "The site whose static widget’s values are required", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "staticWidgetId": {
+                    "description": "The static widget whose values are required", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns all the given static widget’s values", 
+            "uri": "/sites/{siteRef}/static-values/{staticWidgetId}"
+        }, 
+        "GetSitesStaticValues": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "The site whose static values are required", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns all the given site’s static values", 
+            "uri": "/sites/{siteRef}/static-values"
+        }, 
+        "GetSitesStyle": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "pageRef": {
+                    "description": "Page ref to load LESS for", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "pageRef.less": {
+                    "location": "uri", 
+                    "required": true
+                }, 
+                "siteRef": {
+                    "description": "Site to load LESS for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns concatenated, compressed LESS styles and headers for a site page", 
+            "uri": "/sites/{siteRef}/styles/{pageRef.less}"
+        }, 
+        "GetSitesStyles": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site to load CSS for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns concatenated, compressed CSS styles and headers for all site pages", 
+            "uri": "/sites/{siteRef}/styles"
+        }, 
+        "GetSitesStyles.css": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site to load CSS for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns concatenated, compressed CSS styles and headers for all site pages", 
+            "uri": "/sites/{siteRef}/styles.css"
+        }, 
+        "GetSitesStyles.less": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site to load LESS for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns concatenated, compressed LESS styles and headers for all site pages", 
+            "uri": "/sites/{siteRef}/styles.less"
+        }, 
+        "GetSitesUsers": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be used.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all users associated with the site.", 
+            "uri": "/sites/{siteRef}/users"
+        }, 
+        "LoginasaSiteuser": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "password": {
+                    "description": "Password of user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference from where to delete the user.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userType": {
+                    "description": "Type of user.", 
+                    "enum": [
+                        "siteUser"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "username": {
+                    "description": "Username of user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Login with a user site credentials.", 
+            "uri": "/sites/{siteRef}/login"
+        }, 
+        "MapDomain": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Ref of an account domain. It is not required but it must be provided if domain is not provided.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "domain": {
+                    "description": "Domain to be mapped to the site, including subdomain e.g. subdomain.domain.tld.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Map a domain to this site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Map the specified domain to the site. The site must be accessible by the caller.", 
+            "uri": "/sites/{siteRef}/domains"
+        }, 
+        "PublishSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "comment": {
+                    "description": "Comment to identify this publish. If this isn’t provided then the publish may still be identified by timestamp.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be published.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Publish the latest version of this site to make it available live on its mapped domains.", 
+            "uri": "/sites/{siteRef}/publish"
+        }, 
+        "PurgeCache": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be published.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Purges the HTTP cache for all of the site’s domains. This will only be available for environments that use a HTTP cache layer.", 
+            "uri": "/sites/{siteRef}/purge-cache"
+        }, 
+        "Removeaccountholderfromsite": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder to remove from site", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site from which to remove account holder", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove an account holder from a site", 
+            "uri": "/sites/{siteRef}/account-holders/{accountHolderRef}"
+        }, 
+        "ResetSite": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "contentMapSiteRef": {
+                    "description": "If a contentMapSiteRef(template) is supplied then that template will be applied to the site immediately after the reset.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be reset.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Reset site with the specified site reference. The site must be accessible and the delete method permitted by the caller. This will essentially delete everything in the site and reset it to the default state.", 
+            "uri": "/sites/{siteRef}/reset"
+        }, 
+        "ArchiveSite": {
+            "httpMethod": "POST",
+            "parameters": {
+                "siteRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": "true",
+                    "type": "integer"
+                }
+            },
+            "summary": "Archive a site",
+            "uri": "/sites/{siteRef}/archive"
+        },
+        "Sevenmigration": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Migrate a site to v7", 
+            "uri": "/sites/{siteRef}/migrate"
+        }, 
+        "Sevenrevert": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Revert a v7 site", 
+            "uri": "/sites/{siteRef}/revert"
+        }, 
+        "Sitewidgetimport": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "pageRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "sourcePageRef": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "sourceSiteRef": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "widgetRefs[0]": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Imports widgets into a site from another site", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}/import"
+        }, 
+        "UnmapDomain": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "domainRef": {
+                    "description": "Domain reference to be unmapped from the site. This can be obtained by getting the data for a site with the includeDomains parameter set.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Unmap the specified domain from the site. The site must be accessible by the caller. If the domain is not already mapped then the call will succeed.", 
+            "uri": "/sites/{siteRef}/domains/{domainRef}"
+        }, 
+        "UpdateDomain": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "domain": {
+                    "description": "Domain to be mapped.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "domainRef": {
+                    "description": "Domain reference to be updated for the site. This can be obtained by getting the data for a site with the includeDomains parameter set.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Update a domain related to this site reference", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update the specified domain for the site. The site must be accessible by the caller and the domain must be mapped to the site.", 
+            "uri": "/sites/{siteRef}/domains/{domainRef}"
+        }, 
+        "UpdateSite": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "activationStatus": {
+                    "description": "Optionally set for sites on brands that use the brand activationURL.", 
+                    "enum": [
+                        "active", 
+                        "inactive"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "databaseReadUser": {
+                    "description": "The site’s database read username (internal-developer only)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "databaseSchema": {
+                    "description": "The name of the site’s database (internal-developer only)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "databaseWriteUser": {
+                    "description": "The site’s database write username (internal-developer only)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "enabled": {
+                    "description": "Boolean value if the site is enabled or disabled", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "live": {
+                    "description": "Boolean value if the site is online or offline.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "mobileSiteRef": {
+                    "description": "Site ref for mobile version of the site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "mobileThemeRef": {
+                    "description": "Mobile theme reference if a mobile site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "primaryUrlRef": {
+                    "description": "The urlRef must be associated with the site.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "privateWidgets": {
+                    "description": "Boolean value if the User should have privateWidgets or not. 0 or 1 allowed", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "redirectToPrimary": {
+                    "description": "Boolean value if the mobile site is offline but you want to redirect back to desktop", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "thumbUrl": {
+                    "description": "thumbUrl location", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User reference of the owner. This may be used to transfer the site to a different user. The new user must be accessible in the caller’s scope.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update Site details. Only updates provided fields.", 
+            "uri": "/sites/{siteRef}"
+        }, 
+        "UpdateSitepage": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "bodyscript": {
+                    "description": "Body Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "colorSwatchRef": {
+                    "description": "Color Swatch", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "Description of the page", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "display_order": {
+                    "description": "The order in which to display the page", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "folder": {
+                    "description": "Ref of the folder type page to move the page into. Provide 0 if you want to move the page to root level.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "fontSwatchRef": {
+                    "description": "Font Swatch", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "headscript": {
+                    "description": "Head Script", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "keywords": {
+                    "description": "Keywords of the page, separated by a comma", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "pageRef": {
+                    "description": "Page reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "pageUrl": {
+                    "description": "Page URL", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "status": {
+                    "default": "active", 
+                    "description": "Controls the page visibility when publishing a site", 
+                    "enum": [
+                        "active", 
+                        "draft", 
+                        "inactive"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "themeRef": {
+                    "description": "Theme", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Title of the page", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "Page type can be one of the following: page,error-page,index,home,error-404,list,single", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a page of a site", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        }, 
+        "UpdateSiteredirect": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "externalUrl": {
+                    "description": "externalUrl can be used with or without http:// prefix.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "pageRef": {
+                    "description": "Page reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "redirection": {
+                    "description": "URI of the page to be redirected to (without forward slash). The URI must be a valid page and must be of type ‘page’,‘error-page’,‘index’,‘home’,‘error-404’,‘single’ in order for the update to work.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "request": {
+                    "description": "Page request", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Site reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Page type can be one of the following: redirect, tempredirect", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a redirect of a site", 
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        }, 
+        "Updateaglobalvalue": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "name": {
+                    "description": "Name", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "Retrieve global values for this siteRef", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "value": {
+                    "description": "Value", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a global value associated with a site", 
+            "uri": "/sites/{siteRef}/global-values/{name}"
+        }, 
+        "UpdateauserforaSite": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "data": {
+                    "description": "New data for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "email": {
+                    "description": "New email for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "New firstName for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "description": "New languageCode for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "New lastName for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "password": {
+                    "description": "New password for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "role": {
+                    "description": "New role for the user. Role must be a ref of a user group.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site reference to be used.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User ref to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "username": {
+                    "description": "New username for the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a user for a Site. Role can also be updated.", 
+            "uri": "/sites/{siteRef}/users/{userRef}"
+        }, 
+        "Updatestaticvaluesforastaticwidget": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "data": {
+                    "description": "An array of key-value pairs describing the static widget", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The site whose static widget’s values are to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "staticWidgetId": {
+                    "description": "The static widget whose values are to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Changes the values associated with a site’s static widget", 
+            "uri": "/sites/{siteRef}/static-values/{staticWidgetId}"
+        }, 
+        "Uploadafileasset": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site ref (expected to be provided with a valid site to allow filtering results by user)", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "token": {
+                    "description": "Single use upload token returned from a call to /users/:accountHolderRef/upload-tokens", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "Categorisation of file being uploaded", 
+                    "enum": [
+                        "files", 
+                        "images", 
+                        "media"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns a single use upload token for method POST /users/:accountHolderRef/assets", 
+            "uri": "/sites/{siteRef}/assets"
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "basekit/php-api-client",
+    "description": "BaseKit PHP API client.",
+    "require": {
+        "guzzle/guzzle": ">=v3.7.4"
+    },
+    "authors": [
+        {
+            "name": "Simon Best",
+            "email": "simon@basekit.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "BaseKit": "src/"
+        }
+    } 
+}

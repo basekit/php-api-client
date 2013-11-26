@@ -1,0 +1,487 @@
+{
+    "operations": {
+        "GetMetricsChannels": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "periodWeek": {
+                    "default": 20, 
+                    "description": "Week number", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "periodYear": {
+                    "default": 2012, 
+                    "description": "Year", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get metrics data with a row for each channel", 
+            "uri": "/metrics/channels"
+        }, 
+        "GetMetricsEvents": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "billingPeriod": {
+                    "description": "Optionally restrict results to events with the given billing period", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brands": {
+                    "description": "Optionally restrict results to a list of brand refs e.g. ‘1 4 15’ (defaults to all brands)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "endDate": {
+                    "description": "Set an upper limit on the date range to be examined (defaults to now)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeBrands": {
+                    "description": "Filter out a list of brand refs from the result (defaults to no filtering)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeDomains": {
+                    "description": "Filter out a list of email domains from the result (defaults to no filtering)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeSources": {
+                    "description": "Filter out a list of event sources from the result (defaults to no filtering)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeTypes": {
+                    "description": "Filter out a list of event types from the result (defaults to no filtering)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "group": {
+                    "default": "user", 
+                    "description": "Optionally group the results by one of these properties (defaults to ‘event’)", 
+                    "enum": [
+                        "event", 
+                        "day", 
+                        "week", 
+                        "month", 
+                        "brand", 
+                        "channel"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "packages": {
+                    "description": "Optionally restrict results to a list of package refs e.g. ‘1 4 15’ (defaults to all packages)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "startDate": {
+                    "description": "Set a lower limit on the date range to be examined (defaults to one month ago)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "types": {
+                    "description": "Optionally restrict results to a list of event types e.g. ‘Cancellation Renewal’ (defaults to all types)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Flexible reporting about metrics events", 
+            "uri": "/metrics/events"
+        }, 
+        "GetMetricsLive_users": {
+            "httpMethod": "GET", 
+            "summary": "Number of users currently live for each package", 
+            "uri": "/metrics/live_users"
+        }, 
+        "GetMetricsLive_users_drilldown": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageRef": {
+                    "description": "The package for which to show current users", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List of users currently live", 
+            "uri": "/metrics/live_users_drilldown"
+        }, 
+        "GetMetricsMonth_packages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "channel": {
+                    "description": "Channel, e.g. PPC, SEO, Direct, Referral, E-Mail, MexAd, Unknown, No Channel", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "monthMonth": {
+                    "default": 1, 
+                    "description": "Specify the month to report about", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "monthYear": {
+                    "default": 2012, 
+                    "description": "Specify the year to report about", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get metrics data for a given month with a row for each package", 
+            "uri": "/metrics/month_packages"
+        }, 
+        "GetMetricsNon_paying_users": {
+            "httpMethod": "GET", 
+            "summary": "List of users who are not paying", 
+            "uri": "/metrics/non_paying_users"
+        }, 
+        "GetMetricsPackages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "channel": {
+                    "description": "Channel, e.g. PPC, SEO, Direct, Referral, E-Mail, MexAd, Unknown, No Channel", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "endWeek": {
+                    "default": 6, 
+                    "description": "Week of end of range", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "endYear": {
+                    "default": 2012, 
+                    "description": "Year of end of range", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "startWeek": {
+                    "default": 1, 
+                    "description": "Week of start of range", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "startYear": {
+                    "default": 2012, 
+                    "description": "Year of start of range", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get metrics data grouped by week", 
+            "uri": "/metrics/packages"
+        }, 
+        "GetMetricsPackages_users": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "channel": {
+                    "description": "Channel, e.g. PPC, SEO, Direct, Referral, E-Mail, MexAd, Unknown, No Channel", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "periodWeek": {
+                    "description": "Week number", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "periodYear": {
+                    "description": "Year", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "showRegs": {
+                    "default": true, 
+                    "description": "Whether registrations should be included in the result", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get metrics data with a row for each user action", 
+            "uri": "/metrics/packages_users"
+        }, 
+        "GetMetricsRevenue": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get revenue data grouped by month", 
+            "uri": "/metrics/revenue"
+        }, 
+        "GetMetricsRevenue_users": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ID", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "filterControlPanelEvents": {
+                    "description": "Whether to remove control panel events from report data", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "internalBrands": {
+                    "description": "Return data for all internal brands. If this parameter is used, brandRef must not be set.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "monthMonth": {
+                    "default": 1, 
+                    "description": "Specify the month to report about", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "monthYear": {
+                    "default": 2012, 
+                    "description": "Specify the year to report about", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get revenue data with a row for each user action", 
+            "uri": "/metrics/revenue_users"
+        }, 
+        "GetMetricsUsers": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "billingCycleOnly": {
+                    "description": "Optionally restrict results to users on active billing cycles (no restriction by default)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "billingPeriod": {
+                    "description": "Optionally restrict results to events with the given billing period", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brands": {
+                    "description": "Optionally restrict results to a list of brand refs e.g. ‘1 4 15’ (defaults to all brands)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "date": {
+                    "description": "Optionally select a date to analyse (defaults to today)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeBrands": {
+                    "description": "Optionally exclude any users on the given list of brand refs (defaults to no restriction)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "excludeDomains": {
+                    "description": "Optionally exclude any users whose email domain is on the given list", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "group": {
+                    "default": "user", 
+                    "description": "Optionally group the results by one of these properties (defaults to ‘user’)", 
+                    "enum": [
+                        "user", 
+                        "brand", 
+                        "package"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "subscriptionOnly": {
+                    "description": "Optionally restrict results to users on active subscription packages (no restriction by default)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Flexible reporting about account holders", 
+            "uri": "/metrics/users"
+        }
+    }
+}

@@ -1,0 +1,176 @@
+{
+    "operations": {
+        "CreateColorSwatch": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "color1": {
+                    "description": "Hex color in swatch position 1, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color2": {
+                    "description": "Hex color in swatch position 2, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color3": {
+                    "description": "Hex color in swatch position 3, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color4": {
+                    "description": "Hex color in swatch position 4, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color5": {
+                    "description": "Hex color in swatch position 5, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color6": {
+                    "description": "Hex color in swatch position 6, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "color7": {
+                    "description": "Hex color in swatch position 7, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "name": {
+                    "description": "Name of the color swatch.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "templateRef": {
+                    "description": "Template which the color swatch is used by", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a new color swatch.", 
+            "uri": "/color-swatches"
+        }, 
+        "DeleteColorSwatch": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "swatchRef": {
+                    "description": "Color swatch reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete color swatch with the specified reference. The delete method must be permitted by the caller.", 
+            "uri": "/color-swatches/{swatchRef}"
+        }, 
+        "GetColorSwatche": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "swatchRef": {
+                    "description": "Color swatch reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get color data for the specified swatch reference.", 
+            "uri": "/color-swatches/{swatchRef}"
+        }, 
+        "GetColorSwatches": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "templateRef": {
+                    "description": "Template which the color swatch is used by", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all color swatches in the environment.", 
+            "uri": "/color-swatches"
+        }, 
+        "UpdateColorSwatch": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "color1": {
+                    "description": "Hex color in swatch position 1, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color2": {
+                    "description": "Hex color in swatch position 2, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color3": {
+                    "description": "Hex color in swatch position 3, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color4": {
+                    "description": "Hex color in swatch position 4, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color5": {
+                    "description": "Hex color in swatch position 5, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color6": {
+                    "description": "Hex color in swatch position 6, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "color7": {
+                    "description": "Hex color in swatch position 7, without the leading hash character e.g. 123ABC.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "default": {
+                    "default": "0", 
+                    "description": "Set this color swatch as default for the template.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "Name of the color swatch.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "swatchRef": {
+                    "description": "Font swatch reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update color data with the specified swatch reference. The update method must be permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/color-swatches/{swatchRef}"
+        }
+    }
+}
