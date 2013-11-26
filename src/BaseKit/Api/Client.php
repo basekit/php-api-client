@@ -4,10 +4,10 @@ namespace BaseKit\Api;
 
 use Guzzle\Common\Collection;
 use Guzzle\Plugin\Oauth\OauthPlugin;
-use Guzzle\Service\Client;
+use Guzzle\Service\Client as GuzzleClient;
 use Guzzle\Service\Description\ServiceDescription;
 
-class Client extends Client
+class Client extends GuzzleClient
 {
     public static function factory($config = array())
     {
@@ -28,7 +28,7 @@ class Client extends Client
 
         $client->setDescription(
             ServiceDescription::factory(
-                __DIR__ . '/../../../basekit.json'
+                __DIR__ . '/../../../service/basekit.json'
             )
         );
 

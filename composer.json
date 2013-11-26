@@ -8,6 +8,10 @@
         {
             "name": "Simon Best",
             "email": "simon@basekit.com"
+        },
+        {
+            "name": "Ade Slade",
+            "email": "adrian.slade@basekit.com"
         }
     ],
     "minimum-stability": "dev",
