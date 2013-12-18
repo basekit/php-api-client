@@ -894,19 +894,6 @@
             "summary": "Reset site with the specified site reference. The site must be accessible and the delete method permitted by the caller. This will essentially delete everything in the site and reset it to the default state.", 
             "uri": "/sites/{siteRef}/reset"
         }, 
-        "ArchiveSite": {
-            "httpMethod": "POST",
-            "parameters": {
-                "siteRef": {
-                    "description": "",
-                    "location": "uri",
-                    "required": "true",
-                    "type": "integer"
-                }
-            },
-            "summary": "Archive a site",
-            "uri": "/sites/{siteRef}/archive"
-        },
         "Sevenmigration": {
             "httpMethod": "POST", 
             "parameters": {

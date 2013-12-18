@@ -1,27 +1,15 @@
 {
     "operations": {
-        "AddReseller": {
+        "CreateReseller": {
             "uri": "/brands/{brandRef}/resellers",
             "httpMethod": "POST", 
-            "summary": "Add a reseller", 
+            "summary": "Create a brand reseller", 
             "parameters": {
                 "brandRef": {
                     "description": "", 
                     "location": "uri", 
                     "required": true, 
                     "type": "numeric"
-                }, 
-                "email": {
-                    "description": "", 
-                    "location": "json", 
-                    "required": true, 
-                    "type": "string"
-                }, 
-                "password": {
-                    "description": "", 
-                    "location": "json", 
-                    "required": true, 
-                    "type": "string"
                 }, 
                 "name": {
                     "description": "", 
@@ -33,13 +21,13 @@
                     "description": "", 
                     "location": "json", 
                     "required": true, 
-                    "type": "string"
+                    "type": "numeric"
                 }, 
                 "defaultLanguageRef": {
                     "description": "", 
                     "location": "json", 
                     "required": true, 
-                    "type": "string"
+                    "type": "numeric"
                 }, 
                 "displayName": {
                     "description": "", 
@@ -50,7 +38,7 @@
                 "accountCreateLimit": {
                     "description": "", 
                     "location": "json", 
-                    "required": true, 
+                    "required": false, 
                     "type": "numeric"
                 }
             }
@@ -58,7 +46,7 @@
         "GetBrandResellers": {
             "uri": "/brands/{brandRef}/resellers",
             "httpMethod": "GET", 
-            "summary": "", 
+            "summary": "Get all brand resellers", 
             "parameters": {
                 "brandRef": {
                     "description": "", 
@@ -71,7 +59,7 @@
         "GetReseller": {
             "uri": "/resellers/{resellerRef}",
             "httpMethod": "GET", 
-            "summary": "", 
+            "summary": "Get a reseller", 
             "parameters": {
                 "resellerRef": {
                     "description": "", 
@@ -84,7 +72,7 @@
         "UpdateReseller": {
             "uri": "/resellers/{resellerRef}",
             "httpMethod": "PUT", 
-            "summary": "", 
+            "summary": "Update a reseller", 
             "parameters": {
                 "resellerRef": {
                     "description": "", 
@@ -92,18 +80,6 @@
                     "required": true, 
                     "type": "numeric"
                 },
-                "email": {
-                    "description": "", 
-                    "location": "json", 
-                    "required": false, 
-                    "type": "string"
-                }, 
-                "password": {
-                    "description": "", 
-                    "location": "json", 
-                    "required": false,
-                    "type": "string"
-                }, 
                 "name": {
                     "description": "", 
                     "location": "json", 
@@ -114,13 +90,13 @@
                     "description": "", 
                     "location": "json", 
                     "required": false, 
-                    "type": "string"
+                    "type": "numeric"
                 }, 
                 "defaultLanguageRef": {
                     "description": "", 
                     "location": "json", 
                     "required": false, 
-                    "type": "string"
+                    "type": "numeric"
                 }, 
                 "displayName": {
                     "description": "", 
@@ -149,7 +125,7 @@
         "DeleteReseller": {
             "uri": "/resellers/{resellerRef}",
             "httpMethod": "DELETE", 
-            "summary": "", 
+            "summary": "Delete a reseller", 
             "parameters": {
                 "resellerRef": {
                     "description": "", 
