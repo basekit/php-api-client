@@ -95,6 +95,12 @@
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
+                },
+                "addToBC": {
+                    "description": "Whether to add to the existing primary billing cycle. Must be 1 or 0.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
                 }
             }, 
             "summary": "Subscribe this user to the specified package reference.", 
@@ -259,18 +265,7 @@
                     "location": "json", 
                     "required": false, 
                     "type": "string"
-                }, 
-                "seenIntroTour": {
-                    "default": 0, 
-                    "description": "Has the user has seen the Tour My App intro tour.", 
-                    "enum": [
-                        "0", 
-                        "1"
-                    ],
-                    "location": "json", 
-                    "required": false, 
-                    "type": "integer"
-                }, 
+                },
                 "state": {
                     "description": "State of the user.", 
                     "location": "json", 
@@ -1038,6 +1033,38 @@
             }, 
             "summary": "", 
             "uri": "/users/{userRef}/sites/domains"
+        },
+        "GetUsersTours": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to retrieve all tours for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all tours that a user has seen", 
+            "uri": "/users/{userRef}/tours"
+        },
+        "AddUsersTours": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to add a tour to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "tourRef": {
+                    "description": "Tour reference to add to the user.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a tour to a user to indicate they have seen it", 
+            "uri": "/users/{userRef}/tours"
         }, 
         "GetUserWidgets": {
             "httpMethod": "GET", 
@@ -1062,7 +1089,7 @@
             "summary": "Get all the widgets available to the user", 
             "uri": "/users/{accountHolderRef}/widgets"
         }, 
-        "Getanuploadtoken": {
+        "GetAnUploadToken": {
             "httpMethod": "POST", 
             "parameters": {
                 "accountHolderRef": {
@@ -1356,18 +1383,7 @@
                     "location": "json", 
                     "required": false, 
                     "type": "string"
-                }, 
-                "seenIntroTour": {
-                    "default": 0, 
-                    "description": "Has the user has seen the Tour My App intro tour.", 
-                    "enum": [
-                        "0", 
-                        "1"
-                    ],
-                    "location": "json", 
-                    "required": false, 
-                    "type": "integer"
-                }, 
+                },
                 "state": {
                     "description": "State in which the user lives", 
                     "location": "json", 
@@ -1501,6 +1517,27 @@
                 "accountHolderRef": {
                     "location":"uri",
                     "required":true
+                }
+            }
+        },
+        "UpdateNotification": {
+            "httpMethod": "PUT",
+            "uri": "/users/{userRef}/notifications/{notificationRef}",
+            "parameters": {
+                "userRef": {
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "notificationRef": {
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "resolved": {
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
                 }
             }
         }

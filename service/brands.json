@@ -14,28 +14,60 @@
                     "location": "json", 
                     "required": true, 
                     "type": "string"
-                }, 
-                "firstRun": {
-                    "default": "0", 
-                    "description": "Set to run on site load", 
-                    "enum": [
-                        "0", 
-                        "1"
-                    ], 
-                    "location": "json", 
-                    "required": false, 
-                    "type": "integer"
-                }, 
+                },
                 "tourID": {
                     "description": "Tour My App ID", 
                     "location": "json", 
                     "required": true, 
                     "type": "string"
+                }, 
+                "sectionName": {
+                    "description": "Name of the section which is picked up by the PHP/JS to display the tour", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Whether tour is active", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                },
+                "quickTour": {
+                    "description": "Whether tour should be displayed on the quick tours help link", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
                 }
             }, 
             "summary": "Adds a new tour to the brand.", 
             "uri": "/brands/{brandRef}/tours"
-        }, 
+        },
+        "GetATour": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "tourRef": {
+                    "description": "Tour ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Gets a tour for the brand based upon tour ref.", 
+            "uri": "/brands/{brandRef}/tours/{tourRef}"
+        },
         "CloneBrand": {
             "httpMethod": "POST", 
             "parameters": {
@@ -123,11 +155,6 @@
             },
             "summary": "Get a list of all brands", 
             "uri": "/brands"
-        }, 
-        "GetBrandsCapabilities": {
-            "httpMethod": "GET", 
-            "summary": "Get a list of all the available capabilities and data types. The brand must be accessible by the caller.", 
-            "uri": "/brands/capabilities"
         }, 
         "GetBrandsCapability": {
             "httpMethod": "GET", 
@@ -440,6 +467,12 @@
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
+                },
+                "sectionName": {
+                    "description": "Section name", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
                 }
             }, 
             "summary": "Get tours for the brand.", 
@@ -607,6 +640,18 @@
                     "required": false, 
                     "type": "string"
                 }, 
+                "googleFont": {
+                    "description": "Google Font versions", 
+                    "enum": [
+                        "latin",
+                        "latin-ext",
+                        "cyrillic",
+                        "cyrillic-ext"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
                 "helpURL": {
                     "description": "Help URL for the brand.", 
                     "location": "json", 
@@ -844,23 +889,42 @@
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
-                }, 
-                "firstRun": {
-                    "default": "0", 
-                    "description": "Set to run on site load", 
-                    "enum": [
-                        "0", 
-                        "1"
-                    ], 
-                    "location": "json", 
-                    "required": false, 
-                    "type": "integer"
-                }, 
+                },
                 "tourRef": {
                     "description": "Tour ref", 
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
+                },
+                "displayName": {
+                    "description": "Tour display name that shows in the help section", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "sectionName": {
+                    "description": "Name of the section which is picked up by the PHP/JS to display the tour", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Whether tour is active", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                },
+                "quickTour": {
+                    "description": "Whether tour should be displayed on the quick tours help link", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
                 }
             }, 
             "summary": "Updates a brand tour.", 

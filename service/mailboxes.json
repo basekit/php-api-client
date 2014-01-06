@@ -3,7 +3,7 @@
         "GetUserDomainsMailboxes": {
             "uri": "/users/{accountHolderRef}/domains/mailboxes",
             "httpMethod": "GET", 
-            "summary": "Check if the specified domain is available to be registered.",
+            "summary": "Get all mailboxes across a users’ domains.",
             "parameters": {
                 "accountHolderRef": {
                     "description": "", 
@@ -12,6 +12,56 @@
                     "type": "numeric"
                 }
             }
-        } 
+        },
+        "GetMailboxLoginToken": {
+            "uri": "users/{userRef}/domains/{domainRef}/mailboxes/{username}/login-tokens",
+            "httpMethod": "POST",
+            "summary": "Obtain a login token for a mailbox.",
+            "parameters": {
+                "userRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "domainRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "Username part of email address (the bit before ‘@’).",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            }
+        },
+        "DeleteMailbox": {
+            "uri": "users/{userRef}/domains/{domainRef}/mailboxes/{username}",
+            "httpMethod": "DELETE",
+            "summary": "Delete a mailbox.",
+            "parameters": {
+                "userRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "domainRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "Username part of email address (the bit before ‘@’).",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            }
+        }
     }
 }
