@@ -1,0 +1,237 @@
+{
+    "operations": {
+        "CreateBlogPost": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog this post belongs to", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title of the post", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "content": {
+                    "description": "Content for the post", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "summary": {
+                    "description": "Summary of the post",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "tags": {
+                    "description": "Tags seperated by commas", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "categoryRef": {
+                    "description": "Category ref of the post", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                },
+                "published": {
+                    "description" : "Published status",
+                    "location" : "json",
+                    "required": false,
+                    "type" : "string",
+                    "enum": [
+                        0, 
+                        1
+                    ]
+                },
+                 "featureImageAssetRef": {
+                    "description": "The assetRef of the post’s feature image.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                },
+                "commentPreference": {
+                    "description" : "Preference on commenting on the post",
+                    "location" : "json",
+                    "required": false,
+                    "type" : "string",
+                    "enum": [
+                        "allowed", 
+                        "moderated"
+                    ]
+                }
+            }, 
+            "summary": "Create a blog post", 
+            "uri": "/blogs/{blogRef}/posts"
+        },
+        "UpdateBlogPost": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "blogRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                 "postRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title of the post",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "content": {
+                    "description": "Content for the post",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "summary": {
+                    "description": "Summary of the post",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "tags": {
+                    "description": "Tags seperated by commas",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "categoryRef": {
+                    "description": "Category ref of the post",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "published": {
+                    "description" : "Published status",
+                    "location" : "json",
+                    "required": false,
+                    "type" : "string",
+                    "enum": [
+                        0, 
+                        1
+                    ]
+                },
+                "featureImageAssetRef": {
+                    "description": "The assetRef of the post’s feature image.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                },
+                "commentPreference": {
+                    "description" : "Preference on commenting on the post",
+                    "location" : "json",
+                    "required": false,
+                    "type" : "string",
+                    "enum": [
+                        "allowed",
+                        "moderated"
+                    ]
+                }
+            },
+            "summary": "Update a blog post",
+            "uri": "/blogs/{blogRef}/posts/{postRef}"
+        },
+        "GetBlogPost": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "postRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a blog post", 
+            "uri": "/blogs/{blogRef}/posts/{postRef}"
+        }, 
+        "GetBlogPosts": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "search": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string"
+                },
+                "published": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                },
+                "category": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string"
+                },
+                "order": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "tag": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get all posts for a blog", 
+            "uri": "/blogs/{blogRef}/posts"
+        },
+        "DeleteBlogPost": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "blogRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "postRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a blog post", 
+            "uri": "/blogs/{blogRef}/posts/{postRef}"
+        }
+    }
+}

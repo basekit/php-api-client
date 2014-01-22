@@ -1,0 +1,105 @@
+{
+    "operations": {
+        "CreateBlog": {
+            "httpMethod": "POST",
+            "parameters": {
+                "accountHolderRef": {
+                    "default": 0,
+                    "description": "The account holder to add the blog to",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title of the blog",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "summary": {
+                    "description": "Summary of the blog",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "initialUriPathSegment": {
+                    "description": "All blog route paths begin with this segment. For example, /blog/a-blog-post.",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "postsPerPage": {
+                    "description": "Posts to display per page",
+                    "location": "json",
+                    "required": false,
+                    "type": "numeric"
+                }
+            },
+            "summary": "Create a blog",
+            "uri": "/blogs"
+        },
+        "GetBlog": {
+            "httpMethod": "GET",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog to return",
+                    "location": "uri",
+                    "required": true,
+                    "type": "numeric"
+                }
+            },
+            "summary": "Get a blog",
+            "uri": "/blogs/{blogRef}"
+        },
+        "UpdateBlog": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "blogRef": {
+                    "description": "",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "The title of the blog",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "summary": {
+                    "description": "A short description of the blog",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "postsPerPage": {
+                    "description": "Posts to display per page",
+                    "location": "json",
+                    "required": false,
+                    "type": "numeric"
+                }
+            },
+            "summary": "Update a blog",
+            "uri": "/blogs/{blogRef}"
+        },
+        "AddBlogToSite": {
+            "httpMethod": "POST",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "siteRef": {
+                    "description": "The ref of the site to add the blog to",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Add a blog to a site",
+            "uri": "/blogs/{blogRef}/sites/{siteRef}"
+        }
+    }
+}

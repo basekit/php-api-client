@@ -1,0 +1,99 @@
+{
+    "operations": {
+        "GetBlogCategories": {
+            "httpMethod": "GET",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Get a all blog categories",
+            "uri": "/blogs/{blogRef}/categories"
+        },
+        "CreateBlogCategory": {
+            "httpMethod": "POST",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog this category belongs to",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "Name of the category",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "summary": "Create a category for a blog",
+            "uri": "/blogs/{blogRef}/categories"
+        },
+        "GetBlogCategory": {
+            "httpMethod": "GET",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "categoryRef": {
+                    "description": "The ref of the category",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Get a category",
+            "uri": "/blogs/{blogRef}/categories/{categoryRef}"
+        },
+        "UpdateBlogCategory": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog this category belongs to",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "categoryRef": {
+                    "description": "The ref of the category to be updated",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "Name of the category",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "summary": "Update a category name",
+            "uri": "/blogs/{blogRef}/categories/{categoryRef}"
+        },
+        "DeleteBlogCategory": {
+            "httpMethod": "DELETE",
+            "parameters": {
+                "blogRef": {
+                    "description": "The ref of the blog this category belongs to",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "categoryRef": {
+                    "description": "The ref of the category to be deleted",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Delete a category",
+            "uri": "/blogs/{blogRef}/categories/{categoryRef}"
+        }
+    }
+}

@@ -34,6 +34,10 @@
         "themes.json",
         "translations.json",
         "users.json",
-        "widgets.json"
+        "widgets.json",
+        "plugins/blogs.json",
+        "plugins/blogs/categories.json",
+        "plugins/blogs/posts.json",
+        "plugins/users/blogs.json"
     ]
 }
