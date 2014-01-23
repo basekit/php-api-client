@@ -5,7 +5,7 @@
             "parameters": {
                 "blogRef": {
                     "description": "The ref of the blog this post belongs to", 
-                    "location": "json", 
+                    "location": "uri",
                     "required": true, 
                     "type": "integer"
                 },
