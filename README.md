@@ -2,6 +2,7 @@ BaseKit REST API Client
 =======================
 
 [![Build Status](https://secure.travis-ci.org/basekit/php-api-client.png)](http://travis-ci.org/basekit/php-api-client)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/basekit/php-api-client/badges/quality-score.png?s=1ebfb26b984131090693ffca1ba26ede5354a037)](https://scrutinizer-ci.com/g/basekit/php-api-client/)
 
 A PHP client for [BaseKit]'s REST API. This client provides extensive
 documentation of the services available from the BaseKit API, describing URIs,
