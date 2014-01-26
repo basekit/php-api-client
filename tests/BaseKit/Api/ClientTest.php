@@ -2,6 +2,7 @@
 namespace BaseKitTests\Api;
 
 use BaseKit\Api;
+use Guzzle\Service\Command\OperationCommand;
 use PHPUnit_Framework_TestCase;
 
 class ClientTest extends PHPUnit_Framework_TestCase
@@ -21,5 +22,16 @@ class ClientTest extends PHPUnit_Framework_TestCase
             )
         );
         $this->assertTrue($client instanceof Api\Client);
+        return $client;
+    }
+
+    /**
+     * @test
+     * @depends factory
+     */
+    public function loadsServiceDescription($client)
+    {
+        $command = $client->getCommand('GetBrands');
+        $this->assertTrue($command instanceof OperationCommand);
     }
 }
