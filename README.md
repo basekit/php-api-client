@@ -48,7 +48,7 @@ $ make lint
 ```
 
 There's a very small unit test suite, using [PHPUnit]. Making sure you haven't
-broken any existing tests is easy too.
+broken any tests is easy too.
 
 ```bash
 $ make test
