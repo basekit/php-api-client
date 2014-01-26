@@ -1,7 +1,7 @@
 BaseKit REST API Client
 =======================
 
-A PHP client for BaseKit's REST API. This client provides extensive
+A PHP client for [BaseKit]'s REST API. This client provides extensive
 documentation of the services available from the BaseKit API, describing URIs,
 HTTP methods and input parameters.
 
@@ -59,5 +59,6 @@ License
 
 To be determined.
 
+[BaseKit]: http://basekit.com/
 [PHPUnit]: http://phpunit.de/
 [PSR2]: http://www.php-fig.org/psr/psr-2/
