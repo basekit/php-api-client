@@ -32,8 +32,6 @@ class Client extends GuzzleClient
             )
         );
 
-        // @todo Add cache plugin
-
         return $client;
     }
 }
