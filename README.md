@@ -37,7 +37,27 @@ $response = $getPages->execute();
 print_r($response);
 ```
 
+Contributing
+------------
+
+This project adheres to the [PSR2] coding style guide. Checking your
+contribution's correctness is easy.
+
+```bash
+$ make lint
+```
+
+There's a very small unit test suite, using [PHPUnit]. Making sure you haven't
+broken any existing tests is easy too.
+
+```bash
+$ make test
+```
+
 License
 -------
 
 To be determined.
+
+[PHPUnit]: http://phpunit.de/
+[PSR2]: http://www.php-fig.org/psr/psr-2/
