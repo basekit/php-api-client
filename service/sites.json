@@ -996,7 +996,7 @@
                     "description": "Domain to be mapped.",
                     "location": "json",
                     "required": true,
-                    "type": "integer"
+                    "type": "string"
                 },
                 "domainRef": {
                     "description": "Domain reference to be updated for the site. This can be obtained by getting the data for a site with the includeDomains parameter set.",
