@@ -23,7 +23,6 @@
     },
 
     "require": {
-        "guzzle/guzzle": ">=v3.7.4"
     },
 
     "require-dev": {

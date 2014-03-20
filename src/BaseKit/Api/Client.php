@@ -7,6 +7,10 @@ use Guzzle\Plugin\Oauth\OauthPlugin;
 use Guzzle\Service\Client as GuzzleClient;
 use Guzzle\Service\Description\ServiceDescription;
 
+if (!class_exists('Guzzle\Service\Client')) {
+    require('guzzle.phar');
+}
+
 class Client extends GuzzleClient
 {
     public static function factory($config = array())
