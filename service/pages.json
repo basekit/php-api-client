@@ -1,6 +1,6 @@
 {
     "operations": {
-        "Addwidgettopage": {
+        "AddWidgetToPage": {
             "httpMethod": "POST", 
             "parameters": {
                 "pageRef": {
@@ -14,10 +14,64 @@
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
+                },
+                "name": {
+                    "description": "Name of widget", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "Type of widget", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "collection": {
+                    "description": "Collection in which to create widget", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "parentId": {
+                    "description": "Parent widget identifier", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "pageRef": {
+                    "description": "Page reference on which to create widget", 
+                    "location": "json", 
+                    "required": false,
+                    "type": "integer"
+                }, 
+                "libraryItemRef": {
+                    "description": "Library item reference in which to create widget", 
+                    "location": "json", 
+                    "required": false,
+                    "type": "integer"
+                },
+                "templateRef": {
+                    "description": "Template reference in which to create widget", 
+                    "location": "json", 
+                    "required": false,
+                    "type": "integer"
+                },
+                "position": {
+                    "description": "Position of widget in its collection", 
+                    "location": "json", 
+                    "required": false,
+                    "type": "integer"
+                },
+                "values": {
+                    "description": "Widget values", 
+                    "location": "json",
+                    "required": false,
+                    "type": "object"
                 }
             }, 
             "summary": "Add a widget to a page", 
-            "uri": "/sites/{siteRef}/pages/{pageRef}/widgets"
+            "uri": "/sites/{siteRef}/widgets"
         }, 
         "ClonePage": {
             "httpMethod": "POST", 
