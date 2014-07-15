@@ -1,0 +1,46 @@
+{
+    "operations": {
+
+        "CreateSite": {
+            "httpMethod": "POST",
+            "summary": "Create a new site",
+            "uri": "/sites",
+            "parameters": {
+
+                "accountHolderRef": {
+                    "description": "The reference of the account holder that will own the created site.",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "activationStatus": {
+                    "description": "If the site's brand activationURL is set and the site has an inactive activationStatus, clicking the publish button in the editor will result in a redirect to the aforementioned URL.",
+                    "enum": [
+                        "active",
+                        "inactive"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+
+                "brandRef": {
+                    "description": "The reference of the brand that the site will be owned by. This is the brand reference that has been provided to you.",
+                    "location": "json",
+                    "required": true,
+                    "type": "numeric"
+                },
+
+                "domain": {
+                    "description": "The domain name that will be initially used to access the site. The domain must have DNS mapped to the environment on which the site is being created.",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                }
+
+            }
+        }
+
+    }
+}

@@ -1,0 +1,34 @@
+{
+
+    "name": "basekit/php-api-client",
+    "description": "BaseKit PHP API client.",
+
+    "authors": [
+        {
+            "name": "Simon Best",
+            "email": "simon@basekit.com"
+        },
+        {
+            "name": "Ade Slade",
+            "email": "adrian.slade@basekit.com"
+        }
+    ],
+
+    "minimum-stability": "dev",
+
+    "autoload": {
+        "psr-0": {
+            "BaseKit": "src/"
+        }
+    },
+
+    "require": {
+        "guzzle/guzzle": ">=v3.7.4"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*@dev",
+        "squizlabs/php_codesniffer": "1.4.6"
+    }
+
+}
