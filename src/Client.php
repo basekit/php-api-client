@@ -28,7 +28,7 @@ class Client extends GuzzleClient
 
         $client->setDescription(
             ServiceDescription::factory(
-                __DIR__ . '/../../../service/basekit.json'
+                __DIR__ . '/../service/basekit.json'
             )
         );
 

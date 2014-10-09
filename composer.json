@@ -17,8 +17,8 @@
     "minimum-stability": "dev",
 
     "autoload": {
-        "psr-0": {
-            "BaseKit": "src/"
+        "psr-4": {
+            "BaseKit\\Api\\": "src/"
         }
     },
 
