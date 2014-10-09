@@ -1,0 +1,145 @@
+{
+    "operations": {
+
+        "CreateSitePage": {
+            "httpMethod": "POST",
+            "uri": "/sites/{siteRef}/pages",
+            "summary": "Create a page on a site",
+            "parameters": {
+
+                "siteRef": {
+                    "description": "Site reference to be returned.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "pageUrl": {
+                    "description": "Page URL",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "seo_title": {
+                    "description": "Seo title of the page",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "status": {
+                    "default": "active",
+                    "description": "Controls the page visibility when publishing a site",
+                    "enum": [
+                        "active",
+                        "draft",
+                        "inactive"
+                    ],
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "title": {
+                    "description": "Title of the page",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "type": {
+                    "default": "page",
+                    "description": "The type of page to be created",
+                    "enum": [
+                        "folder",
+                        "page",
+                        "error-page",
+                        "index",
+                        "home",
+                        "error-404",
+                        "list",
+                        "single"
+                    ],
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+
+            }
+        },
+
+        "UpdateSitepage": {
+            "httpMethod": "PUT",
+            "uri": "/sites/{siteRef}/pages/{pageRef}",
+            "summary": "Update a page of a site",
+            "parameters": {
+
+                "siteRef": {
+                    "description": "Site reference.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "pageRef": {
+                    "description": "Page reference to be updated.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "pageUrl": {
+                    "description": "Page URL",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+
+                "status": {
+                    "default": "active",
+                    "description": "Controls the page visibility when publishing a site",
+                    "enum": [
+                        "active",
+                        "draft",
+                        "inactive"
+                    ],
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "type": {
+                    "description": "Page type can be one of the following: page,error-page,index,home,error-404,list,single",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                }
+            }
+        },
+
+        "Addwidgettopage": {
+            "httpMethod": "POST",
+            "uri": "/sites/{siteRef}/pages/{pageRef}/widgets",
+            "summary": "Add a widget to a page",
+            "parameters": {
+
+                "siteRef": {
+                    "description": "Site reference to retrieve site.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "pageRef": {
+                    "description": "Page reference to retrieve page.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+
+            }
+        }
+
+    }
+}

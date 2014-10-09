@@ -40,6 +40,45 @@
                 }
 
             }
+        },
+
+        "MapDomain": {
+            "httpMethod": "POST",
+            "uri": "/sites/{siteRef}/domains",
+            "summary": "Map the specified domain to the site. The site must be accessible by the caller.",
+            "parameters": {
+
+                "siteRef": {
+                    "description": "Map a domain to this site.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+
+                "domain": {
+                    "description": "Domain to be mapped to the site, including subdomain e.g. subdomain.domain.tld.",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                }
+
+            }
+        },
+
+        "PublishSite": {
+            "httpMethod": "POST",
+            "uri": "/sites/{siteRef}/publish",
+            "summary": "Publish the latest version of this site to make it available live on its mapped domains.",
+            "parameters": {
+
+                "siteRef": {
+                    "description": "Site reference to be published.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+
+            }
         }
 
     }
