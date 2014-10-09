@@ -1,6 +1,7 @@
 {
     "name":"BaseKit REST API",
     "includes":[
-        "sites.json"
+        "sites.json",
+        "users.json"
     ]
 }

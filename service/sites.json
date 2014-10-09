@@ -3,8 +3,8 @@
 
         "CreateSite": {
             "httpMethod": "POST",
-            "summary": "Create a new site",
             "uri": "/sites",
+            "summary": "Create a new site",
             "parameters": {
 
                 "accountHolderRef": {

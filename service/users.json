@@ -1,0 +1,64 @@
+{
+    "operations": {
+
+        "CreateUser": {
+            "httpMethod": "POST",
+            "uri": "/users",
+            "summary": "Create a new user account",
+            "parameters": {
+
+                "brandRef": {
+                    "description": "Brand in which to create the user.",
+                    "location": "json",
+                    "required": true,
+                    "type": "numeric"
+                },
+
+                "username": {
+                    "description": "",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "password": {
+                    "description": "Password for the new user. This must be more than 6 characters in length.",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "email": {
+                    "description": "E-mail address of the user. Must be a valid e-mail address e.g. name@domain.com.",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "firstName": {
+                    "description": "First name of the user.",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "lastName": {
+                    "description": "Last name of the user.",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+
+                "languageCode": {
+                    "default": "en",
+                    "description": "Initial language code for the user. This can be manually changed by the user.",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+
+            }
+        }
+
+    }
+}
