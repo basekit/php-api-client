@@ -63,7 +63,7 @@
             "summary": "Add note to a user", 
             "uri": "/users/{accountHolderRef}/notes"
         }, 
-        "Addpackage": {
+        "AddPackage": {
             "httpMethod": "POST", 
             "parameters": {
                 "billingFrequency": {
@@ -99,7 +99,7 @@
                 "addToBC": {
                     "description": "Whether to add to the existing primary billing cycle. Must be 1 or 0.", 
                     "location": "json", 
-                    "required": true, 
+                    "required": false, 
                     "type": "integer"
                 }
             }, 
