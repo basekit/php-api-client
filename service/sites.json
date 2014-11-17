@@ -391,7 +391,7 @@
             "summary": "Delete the site",
             "uri": "/sites/{siteRef}"
         },
-        "DeleteSitepage/redirect/folder": {
+        "DeleteSitePage": {
             "httpMethod": "DELETE",
             "parameters": {
                 "pageRef": {
@@ -1127,7 +1127,7 @@
             "summary": "Update Site details. Only updates provided fields.",
             "uri": "/sites/{siteRef}"
         },
-        "UpdateSitepage": {
+        "UpdateSitePage": {
             "httpMethod": "PUT",
             "parameters": {
                 "bodyscript": {
