@@ -42,6 +42,269 @@
             }
         },
 
+        "UpdateSite": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "activationStatus": {
+                    "description": "Optionally set for sites on brands that use the brand activationURL.",
+                    "enum": [
+                        "active",
+                        "inactive"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "databaseReadUser": {
+                    "description": "The site’s database read username (internal-developer only)",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "databaseSchema": {
+                    "description": "The name of the site’s database (internal-developer only)",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "databaseWriteUser": {
+                    "description": "The site’s database write username (internal-developer only)",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Boolean value if the site is enabled or disabled",
+                    "enum": [
+                        "0",
+                        "1"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "live": {
+                    "description": "Boolean value if the site is online or offline.",
+                    "enum": [
+                        "0",
+                        "1"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "templateRef": {
+                    "description": "Ref of the template to be used on the site",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "mobileSiteRef": {
+                    "description": "Site ref for mobile version of the site.",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "mobileThemeRef": {
+                    "description": "Mobile theme reference if a mobile site.",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "primaryUrlRef": {
+                    "description": "The urlRef must be associated with the site.",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "privateWidgets": {
+                    "description": "Boolean value if the User should have privateWidgets or not. 0 or 1 allowed",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "redirectToPrimary": {
+                    "description": "Boolean value if the mobile site is offline but you want to redirect back to desktop",
+                    "enum": [
+                        "0",
+                        "1"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "siteRef": {
+                    "description": "Site reference to be updated.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "thumbUrl": {
+                    "description": "thumbUrl location",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "userRef": {
+                    "description": "User reference of the owner. This may be used to transfer the site to a different user. The new user must be accessible in the caller’s scope.",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                }
+            },
+            "summary": "Update Site details. Only updates provided fields.",
+            "uri": "/sites/{siteRef}"
+        },
+
+        "UpdateSitePage": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "bodyscript": {
+                    "description": "Body Script",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "colorSwatchRef": {
+                    "description": "Color Swatch",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "Description of the page",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "displayOrder": {
+                    "description": "The order in which to display the page",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "folder": {
+                    "description": "Ref of the folder type page to move the page into. Provide 0 if you want to move the page to root level.",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "fontSwatchRef": {
+                    "description": "Font Swatch",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "headscript": {
+                    "description": "Head Script",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "keywords": {
+                    "description": "Keywords of the page, separated by a comma",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "pageRef": {
+                    "description": "Page reference to be updated.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "pageUrl": {
+                    "description": "Page URL",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "siteRef": {
+                    "description": "Site reference.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "status": {
+                    "default": "active",
+                    "description": "Controls the page visibility when publishing a site",
+                    "enum": [
+                        "active",
+                        "draft",
+                        "inactive"
+                    ],
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "themeRef": {
+                    "description": "Theme",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title of the page",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Page type can be one of the following: page,error-page,index,home,error-404,list,single",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                }
+            },
+            "summary": "Update a page of a site",
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        },
+
+        "DeleteSitePage": {
+            "httpMethod": "DELETE",
+            "parameters": {
+                "pageRef": {
+                    "description": "Page reference to be deleted. If a folder is provided, all child pages will be deleted.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "siteRef": {
+                    "description": "Site reference.",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Delete a page or a redirect or a folder from a site",
+            "uri": "/sites/{siteRef}/pages/{pageRef}"
+        },
+
+        "Updatestaticvaluesforastaticwidget": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "values": {
+                    "description": "An array of key-value pairs describing the static widget",
+                    "location": "json",
+                    "required": true
+                },
+                "siteRef": {
+                    "description": "The site whose static widget’s values are to be updated",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "staticWidgetId": {
+                    "description": "The static widget whose values are to be updated",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "summary": "Changes the values associated with a site’s static widget",
+            "uri": "/sites/{siteRef}/static-values/{staticWidgetId}"
+        },
+
         "MapDomain": {
             "httpMethod": "POST",
             "uri": "/sites/{siteRef}/domains",
