@@ -1368,11 +1368,10 @@
         "Updatestaticvaluesforastaticwidget": {
             "httpMethod": "PUT",
             "parameters": {
-                "data": {
+                "values": {
                     "description": "An array of key-value pairs describing the static widget",
                     "location": "json",
-                    "required": true,
-                    "type": "string"
+                    "required": true
                 },
                 "siteRef": {
                     "description": "The site whose static widget’s values are to be updated",
