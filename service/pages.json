@@ -118,7 +118,7 @@
             }
         },
 
-        "Addwidgettopage": {
+        "AddWidgetToPage": {
             "httpMethod": "POST",
             "uri": "/sites/{siteRef}/pages/{pageRef}/widgets",
             "summary": "Add a widget to a page",
@@ -140,6 +140,5 @@
 
             }
         }
-
     }
 }
