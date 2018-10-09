@@ -14,7 +14,7 @@ Installation
 The recommended way of including this package in your project is by using
 Composer. Add it to the `require` section of your project's `composer.json`.
 
-    "basekit/php-api-client": "1.1.1"
+    "basekit/php-api-client": "1.2.0"
 
 Usage
 -----
