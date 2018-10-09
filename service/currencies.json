@@ -1,0 +1,22 @@
+{
+    "operations": {
+        "GetCurrencie": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "currencyRef": {
+                    "description": "Currency reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get currency data for the specified currency reference.", 
+            "uri": "/currencies/{currencyRef}"
+        }, 
+        "GetCurrencies": {
+            "httpMethod": "GET", 
+            "summary": "Return a list of all available currencies", 
+            "uri": "/currencies"
+        }
+    }
+}

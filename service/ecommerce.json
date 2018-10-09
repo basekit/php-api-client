@@ -1,0 +1,1742 @@
+{
+    "operations": {
+        "CreateAccountHolderStore": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder ref to add an ecommerce store to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "active": {
+                    "description": "Is the store active ?", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "currencyRef": {
+                    "description": "The currency ref to set the prices in the store.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "taxRate": {
+                    "description": "Tax rate for the prices.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "float"
+                }, 
+                "title": {
+                    "description": "A title to name the store.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create an account holder ecommerce store.", 
+            "uri": "/ecom/users/{accountHolderRef}/stores"
+        }, 
+        "CreateaProductCategory": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category ref of a store", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "productRef": {
+                    "description": "Product ref to add the category to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Attach a store category to a product category.", 
+            "uri": "/ecom/products/{productRef}/categories"
+        }, 
+        "CreateaStoreCategory": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "categoryName": {
+                    "description": "A name for the category.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "Store ref to add the category to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create an ecommerce store category.", 
+            "uri": "/ecom/stores/{storeRef}/categories"
+        }, 
+        "CreateaStoreproduct": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "availability": {
+                    "description": "If a product is available in the store (can be available but not visible)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "categories": {
+                    "description": "JSON encoded array of store category refs, this will add the categories to the product. i.e. [1,45,34]", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "longDescription": {
+                    "description": "The product’s longDescription", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "shortDescription": {
+                    "description": "The product’s shortDescription", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sku": {
+                    "description": "The product’s sku identifier", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the product.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tags": {
+                    "description": "JSON encoded string, this will add the tags to the product. i.e. {\"0\":\"tag1\",\"1\":\"tag2\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "title": {
+                    "description": "The product’s title", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "visibility": {
+                    "description": "If a product is visible in the store (can be visible but not available)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a specific product for a store.", 
+            "uri": "/ecom/stores/{storeRef}/products"
+        }, 
+        "Createadeliveryforanorder": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "orderRef": {
+                    "description": "The order ref containing the delivery.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "shippingOptionRef": {
+                    "description": "The shipping option ref.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "trackingCode": {
+                    "description": "The tracking code of a delivery.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a delivery to an order", 
+            "uri": "/ecom/orders/{orderRef}/deliveries"
+        }, 
+        "Createanewshippingforastore": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "name": {
+                    "description": "The shipping’s name", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "The store ref to add the shipping.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "The shipping’s type.", 
+                    "enum": [
+                        "flat", 
+                        "unit"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a shipping to a store", 
+            "uri": "/ecom/stores/{storeRef}/shippings"
+        }, 
+        "Createanitemforanorder": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "currencyRef": {
+                    "description": "The currency ref.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "deliveryRef": {
+                    "description": "The delevery ref.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "price": {
+                    "description": "The unit price of an items.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "productVariationRef": {
+                    "description": "The product variation ref.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "quantity": {
+                    "description": "The quantity of an item", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref that the order belongs to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an item to an order", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}/items"
+        }, 
+        "Createanorderforastore": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "customerRef": {
+                    "description": "The custorer who made the order", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "error": {
+                    "description": "The type of error", 
+                    "enum": [
+                        "payment", 
+                        "success", 
+                        "failure"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "notes": {
+                    "description": "Any notes.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "price": {
+                    "description": "The price of the order.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "float"
+                }, 
+                "status": {
+                    "description": "The status of the order.", 
+                    "enum": [
+                        "pending"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an order to a store", 
+            "uri": "/ecom/stores/{storeRef}/orders"
+        }, 
+        "Createaproductimage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "assetRef": {
+                    "description": "The image’s asset ref", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "productRef": {
+                    "description": "The product ref containing the image.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an image to a specific product.", 
+            "uri": "/ecom/products/{productRef}/images/"
+        }, 
+        "Createaproducttag": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the tag.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tag": {
+                    "description": "The tag", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add an tag to a specific product.", 
+            "uri": "/ecom/products/{productRef}/tags/"
+        }, 
+        "Createaproductvariation": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "availability": {
+                    "description": "If a product is available in the store (can be available but not visible)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "options1": {
+                    "description": "The product’s options1", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options10": {
+                    "description": "The product’s options10", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options2": {
+                    "description": "The product’s options2", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options3": {
+                    "description": "The product’s options3", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options4": {
+                    "description": "The product’s options4", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options5": {
+                    "description": "The product’s options5", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options6": {
+                    "description": "The product’s options6", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options7": {
+                    "description": "The product’s options7", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options8": {
+                    "description": "The product’s options8", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options9": {
+                    "description": "The product’s options9", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "price": {
+                    "description": "The product’s price", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "float"
+                }, 
+                "productRef": {
+                    "description": "The product ref containing the product.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "sale": {
+                    "description": "Is the product on sale?", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "salePrice": {
+                    "description": "The product’s price if on sale", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "float"
+                }, 
+                "sku": {
+                    "description": "The product’s sku identifier", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "stockQuantity": {
+                    "description": "The variation’s stockQuantity", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "visibility": {
+                    "description": "If a product is visible in the store (can be visible but not available)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a specific variation for a product.", 
+            "uri": "/ecom/products/{productRef}/variations"
+        }, 
+        "Createoptionforaspecificshipping": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "default": {
+                    "description": "Is it default ?", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "The option’s name.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "price": {
+                    "description": "The option’s price.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "float"
+                }, 
+                "shippingRef": {
+                    "description": "The shipping ref where adding the option.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an option to a shipping", 
+            "uri": "/ecom/shippings/{shippingRef}/options"
+        }, 
+        "DeleteAccountHolderStore": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder ref to delete the ecommerce stores associated with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref to delete.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a store that belong to an account holder.", 
+            "uri": "/ecom/users/{accountHolderRef}/stores/{storeRef}"
+        }, 
+        "DeleteStoreproduct": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref to soft delete", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the product.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Soft delete a specific product for a store.", 
+            "uri": "/ecom/stores/{storeRef}/products/{productRef}"
+        }, 
+        "DeleteaProductCategory": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category ref of a product", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "productRef": {
+                    "description": "Product ref to add the category to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a product category", 
+            "uri": "/ecom/products/{productRef}/categories/{categoryRef}"
+        }, 
+        "DeleteaStoreCategory": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "The category ref to be deleted", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "Store ref to get the category for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a specific store category.", 
+            "uri": "/ecom/stores/{storeRef}/categories/{categoryRef}"
+        }, 
+        "Deleteadeliveryforanorder": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "deliveryRef": {
+                    "description": "The delivery ref.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the delivery.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a delivery", 
+            "uri": "/ecom/orders/{orderRef}/deliveries/{deliveryRef}"
+        }, 
+        "Deleteanitemforanorder": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "itemRef": {
+                    "description": "The item refto retrieve.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref that the order belongs to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete an item", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}/items/{itemRef}"
+        }, 
+        "Deleteanorderofastore": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "orderRef": {
+                    "description": "The order ref to delete", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a store’s order", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}"
+        }, 
+        "Deleteaproductimage": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "imageRef": {
+                    "description": "The image ref attach to a product", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "productRef": {
+                    "description": "The product ref containing the image.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Unattach an image to a specific product.", 
+            "uri": "/ecom/products/{productRef}/images/{imageRef}"
+        }, 
+        "Deleteaproducttag": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the tag.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tagRef": {
+                    "description": "The image ref attach to a product", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a tag to a specific product.", 
+            "uri": "/ecom/products/{productRef}/tags/{tagRef}"
+        }, 
+        "Deleteaspecificoptionofashipping": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "optionRef": {
+                    "description": "The option ref to update.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "shippingRef": {
+                    "description": "The shipping ref containing the options.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a shipping’s option", 
+            "uri": "/ecom/shippings/{shippingRef}/options/{optionRef}"
+        }, 
+        "Deleteaspecificshippingofastore": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "shippingRef": {
+                    "description": "The shipping ref to delete.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a store’s shipping", 
+            "uri": "/ecom/stores/{storeRef}/shippings/{shippingRef}"
+        }, 
+        "Deleteproductvariation": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the variation.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "variationRef": {
+                    "description": "The variation ref to soft delete.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Soft delete a specific variation for a product.", 
+            "uri": "/ecom/products/{productRef}/variations/{variationRef}"
+        }, 
+        "GetEcomOrdersDeliverie": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "deliveryRef": {
+                    "description": "The delivery ref.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the delivery.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a delivery’s order", 
+            "uri": "/ecom/orders/{orderRef}/deliveries/{deliveryRef}"
+        }, 
+        "GetEcomOrdersDeliveries": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderRef": {
+                    "description": "The order ref containing the deliveries.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all order’s delivery", 
+            "uri": "/ecom/orders/{orderRef}/deliveries"
+        }, 
+        "GetEcomProductsCategorie": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category ref of a product to be get", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "productRef": {
+                    "description": "Product ref to add the category to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific product category", 
+            "uri": "/ecom/products/{productRef}/categories/{categoryRef}"
+        }, 
+        "GetEcomProductsCategories": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "Product ref to add the category to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all the categories of a product.", 
+            "uri": "/ecom/products/{productRef}/categories"
+        }, 
+        "GetEcomProductsImages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the images.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all images of a specific product.", 
+            "uri": "/ecom/products/{productRef}/images/"
+        }, 
+        "GetEcomProductsOptions": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the variation.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get options for a product.", 
+            "uri": "/ecom/products/{productRef}/options"
+        }, 
+        "GetEcomProductsTags": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the tags.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all tags of a specific product.", 
+            "uri": "/ecom/products/{productRef}/tags/"
+        }, 
+        "GetEcomProductsVariation": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the variation.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "variationRef": {
+                    "description": "The variation ref to return the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific variation for a product.", 
+            "uri": "/ecom/products/{productRef}/variations/{variationRef}"
+        }, 
+        "GetEcomProductsVariations": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing all the variations.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all variations of a specific product.", 
+            "uri": "/ecom/products/{productRef}/variations"
+        }, 
+        "GetEcomShippingsOptions": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "shippingRef": {
+                    "description": "The shipping ref containing the options.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all shipping’s option", 
+            "uri": "/ecom/shippings/{shippingRef}/options"
+        }, 
+        "GetEcomStoresCategorie": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "The category ref to return the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "Store ref to get the category for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific store category.", 
+            "uri": "/ecom/stores/{storeRef}/categories/{categoryRef}"
+        }, 
+        "GetEcomStoresCategories": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "storeRef": {
+                    "description": "Store ref to get the associated categories.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of the ecommerce store categories.", 
+            "uri": "/ecom/stores/{storeRef}/categories"
+        }, 
+        "GetEcomStoresOrder": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderRef": {
+                    "description": "The order ref to retrieve", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a store’s order", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}"
+        }, 
+        "GetEcomStoresOrders": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "storeRef": {
+                    "description": "The store ref containing the orders.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all store’s order", 
+            "uri": "/ecom/stores/{storeRef}/orders"
+        }, 
+        "GetEcomStoresOrdersItem": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "itemRef": {
+                    "description": "The item refto retrieve.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref that the order belongs to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get an order’s item", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}/items/{itemRef}"
+        }, 
+        "GetEcomStoresOrdersItems": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "orderRef": {
+                    "description": "The order ref containing the items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref that the order belongs to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all order’s item", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}/items"
+        }, 
+        "GetEcomStoresProduct": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref to return the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the product.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific product for a store.", 
+            "uri": "/ecom/stores/{storeRef}/products/{productRef}"
+        }, 
+        "GetEcomStoresProducts": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "storeRef": {
+                    "description": "The store ref containing all the products.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all products of a specific store.", 
+            "uri": "/ecom/stores/{storeRef}/products"
+        }, 
+        "GetEcomStoresShipping": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "shippingRef": {
+                    "description": "The shipping ref to get.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref to get the shipping from.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a store’s shipping", 
+            "uri": "/ecom/stores/{storeRef}/shippings/{shippingRef}"
+        }, 
+        "GetEcomStoresShippings": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "storeRef": {
+                    "description": "The store ref containing the shipping.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all shipping by store ref", 
+            "uri": "/ecom/stores/{storeRef}/shippings"
+        }, 
+        "GetEcomUsersStore": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder ref to get the ecommerce store for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref to return the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific account holder store.", 
+            "uri": "/ecom/users/{accountHolderRef}/stores/{storeRef}"
+        }, 
+        "GetEcomUsersStores": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder ref to get the ecommerce stores associated with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "includeDeleted": {
+                    "description": "Whether or not to return stores which are deleted.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of the ecommerce stores that belong to an account holder.", 
+            "uri": "/ecom/users/{accountHolderRef}/stores"
+        }, 
+        "UpdateAccountHolderStore": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account Holder reference which owns the store.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "active": {
+                    "description": "To indicate whether the store is online or offline", 
+                    "enum": [
+                        "1", 
+                        "0"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "currencyRef": {
+                    "description": "The currency ref to set the prices in the store.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref to update the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "taxRate": {
+                    "description": "Tax rate for the prices.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "float"
+                }, 
+                "title": {
+                    "description": "A title to name the store.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a specific account holder store.", 
+            "uri": "/ecom/users/{accountHolderRef}/stores/{storeRef}"
+        }, 
+        "UpdateStoreCategory": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "categoryName": {
+                    "description": "A name for the category.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "categoryRef": {
+                    "description": "The category ref to return the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "Store ref to get the category for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a specific store category.", 
+            "uri": "/ecom/stores/{storeRef}/categories/{categoryRef}"
+        }, 
+        "UpdateStoreproduct": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "availability": {
+                    "description": "If a product is available in the store (can be available but not visible)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "categories": {
+                    "description": "JSON encoded array of store category refs, this will update the categories on the product. i.e. [1,45,34]", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "longDescription": {
+                    "description": "The product’s longDescription", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "productRef": {
+                    "description": "The product ref to update the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "shortDescription": {
+                    "description": "The product’s shortDescription", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sku": {
+                    "description": "The product’s sku identifier", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the product.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tags": {
+                    "description": "JSON encoded string, this will update the tags on the product. i.e. {\"0\":\"tag1\",\"1\":\"tag2\"}", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "title": {
+                    "description": "The product’s title", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "visibility": {
+                    "description": "If a product is visible in the store (can be visible but not available)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a specific product for a store.", 
+            "uri": "/ecom/stores/{storeRef}/products/{productRef}"
+        }, 
+        "Updateadeliveryforanorder": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "deliveryRef": {
+                    "description": "The delivery ref.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the delivery.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "shippingOptionRef": {
+                    "description": "The shipping option ref.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "trackingCode": {
+                    "description": "The tracking code of a delivery.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a delivery informations", 
+            "uri": "/ecom/orders/{orderRef}/deliveries/{deliveryRef}"
+        }, 
+        "Updateanitemforanorder": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "currencyRef": {
+                    "description": "The currency ref.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "itemRef": {
+                    "description": "The item ref to update.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "orderRef": {
+                    "description": "The order ref containing the items.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "price": {
+                    "description": "The unit price of an items.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "productVariationRef": {
+                    "description": "The product variation ref.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "quantity": {
+                    "description": "The quantity of an item", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref that the order belongs to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update an item", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}/items/{itemRef}"
+        }, 
+        "Updateanorderforastore": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "abandoned": {
+                    "description": "Indicate whether the order has been abandoned.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "dispatched": {
+                    "description": "Indicate whether the order has been dispatched.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "error": {
+                    "description": "The type of error", 
+                    "enum": [
+                        "payment", 
+                        "success", 
+                        "failure"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "notes": {
+                    "description": "Any notes.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "orderRef": {
+                    "description": "The order ref to update", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paid": {
+                    "description": "Indicate whether the order has been paid.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "price": {
+                    "description": "The price of the order.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "float"
+                }, 
+                "status": {
+                    "description": "The status of the order.", 
+                    "enum": [
+                        "pending"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "storeRef": {
+                    "description": "The store ref containing the order.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update an order informations", 
+            "uri": "/ecom/stores/{storeRef}/orders/{orderRef}"
+        }, 
+        "Updateaproductimage": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "assetRef": {
+                    "description": "The image’s asset ref", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "imageRef": {
+                    "description": "The image ref to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "productRef": {
+                    "description": "The product ref containing the image.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update the asset ref of an image attach to a specific product.", 
+            "uri": "/ecom/products/{productRef}/images/{imageRef}"
+        }, 
+        "Updateaproducttag": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "productRef": {
+                    "description": "The product ref containing the tag.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tag": {
+                    "description": "The tag", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "tagRef": {
+                    "description": "The tag ref to be updated", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update the tag of a specific product.", 
+            "uri": "/ecom/products/{productRef}/tags/{tagRef}"
+        }, 
+        "Updateashipping'soption": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "default": {
+                    "description": "Is it default ?", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "The option’s name.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "optionRef": {
+                    "description": "The option ref to update.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "price": {
+                    "description": "The option’s price.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "float"
+                }, 
+                "shippingRef": {
+                    "description": "The shipping ref where adding the option.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update informations of an option for a shipping", 
+            "uri": "/ecom/shippings/{shippingRef}/options/{optionRef}"
+        }, 
+        "Updateaspecificshippingofastore": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "name": {
+                    "description": "The shipping’s name", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "shippingRef": {
+                    "description": "The shipping ref to update.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "storeRef": {
+                    "description": "The store ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "The shipping’s type.", 
+                    "enum": [
+                        "flat", 
+                        "unit"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a store’s shipping", 
+            "uri": "/ecom/stores/{storeRef}/shippings/{shippingRef}"
+        }, 
+        "Updateproduct'soptions": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "options1": {
+                    "description": "The product’s options1", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options10": {
+                    "description": "The product’s options10", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options2": {
+                    "description": "The product’s options2", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options3": {
+                    "description": "The product’s options3", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options4": {
+                    "description": "The product’s options4", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options5": {
+                    "description": "The product’s options5", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options6": {
+                    "description": "The product’s options6", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options7": {
+                    "description": "The product’s options7", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options8": {
+                    "description": "The product’s options8", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options9": {
+                    "description": "The product’s options9", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "productRef": {
+                    "description": "The product ref to attach the options", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update options for a product.", 
+            "uri": "/ecom/products/{productRef}/options"
+        }, 
+        "Updateproductvariation": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "availability": {
+                    "description": "If a product is available in the store (can be available but not visible)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "options1": {
+                    "description": "The product’s options1", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options10": {
+                    "description": "The product’s options10", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options2": {
+                    "description": "The product’s options2", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options3": {
+                    "description": "The product’s options3", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options4": {
+                    "description": "The product’s options4", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options5": {
+                    "description": "The product’s options5", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options6": {
+                    "description": "The product’s options6", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options7": {
+                    "description": "The product’s options7", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options8": {
+                    "description": "The product’s options8", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "options9": {
+                    "description": "The product’s options9", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "price": {
+                    "description": "The product’s price", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "float"
+                }, 
+                "productRef": {
+                    "description": "The product ref containing the variation.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "sale": {
+                    "description": "Is the product on sale?", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "salePrice": {
+                    "description": "The product’s price if on sale", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "float"
+                }, 
+                "sku": {
+                    "description": "The product’s sku identifier", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "stockQuantity": {
+                    "description": "The variation’s stockQuantity", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "variationRef": {
+                    "description": "The variation ref to update the details for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "visibility": {
+                    "description": "If a product is visible in the store (can be visible but not available)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a specific product for a store.", 
+            "uri": "/ecom/products/{productRef}/variations/{variationRef}"
+        }
+    }
+}

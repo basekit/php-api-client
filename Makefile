@@ -8,6 +8,6 @@ test: vendor
 	./vendor/bin/phpunit
 
 vendor:
-	php composer.phar install
+	composer install
 
 .PHONY: build lint test

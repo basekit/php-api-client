@@ -1,0 +1,205 @@
+{
+    "operations": {
+        "GetMetric": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "brandRef", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "channelRef": {
+                    "description": "channelRef", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "endWeek": {
+                    "description": "endWeek", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "endYear": {
+                    "description": "endYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "formatType": {
+                    "description": "Format type checks for ‘chart’ type.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "monthMonth": {
+                    "description": "endYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "monthYear": {
+                    "description": "endYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "periodWeek": {
+                    "description": "endYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "periodYear": {
+                    "description": "periodYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "reportType": {
+                    "description": "Report type to be generated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "startWeek": {
+                    "description": "startWeek", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "startYear": {
+                    "description": "startYear", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns an array of metrics data", 
+            "uri": "/metrics/{reportType}"
+        }, 
+        "GetReportAccountholderinvoices": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref to report on, required.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "dateFrom": {
+                    "description": "Filter transactions with date before that", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Filter transactions with date later than that", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns an array of payment transactions (status success only) for given account holder, for use within the control panel", 
+            "uri": "/report/accountholderinvoices"
+        }, 
+        "GetReportAnnualrenewalsdue": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "dateFrom": {
+                    "description": "Filter transactions with start date", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Filter transactions with end date", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns an array of account holders with details of their forthcoming annual renewal", 
+            "uri": "/report/annualrenewalsdue"
+        }, 
+        "GetReportExpiringcards": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref to report on, default to the API users brand if none set.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "intervalMonths": {
+                    "description": "Number of months to add to current date to search upon. i.e To return cards expiring within the next ‘$intervalMonths’.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns an array of expiring card data for use within the control panel", 
+            "uri": "/report/expiringcards"
+        }, 
+        "GetReportInternalpayments": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "dateFrom": {
+                    "description": "Filter transactions with start date dd/mm/yy", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Filter transactions with end date dd/mm/yy", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns an array of payment transactions made by BaseKit internal cards and paypal accounts", 
+            "uri": "/report/internalpayments"
+        }, 
+        "GetReportPaymenttransactions": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref to report on, default to the API users brand if none set.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "dateFrom": {
+                    "description": "Filter transactions with date before that", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Filter transactions with date later than that", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "includeNotStarted": {
+                    "description": "Whether to include not-started payments in the report", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns an array of payment transactions for use within the control panel", 
+            "uri": "/report/paymenttransactions"
+        }, 
+        "GetReportPublishedsites": {
+            "httpMethod": "GET", 
+            "summary": "Returns an array of published sites for use within the control panel", 
+            "uri": "/report/publishedsites"
+        }
+    }
+}

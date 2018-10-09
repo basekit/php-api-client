@@ -1,0 +1,294 @@
+{
+    "operations": {
+        "CreatePreset": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "className": {
+                    "description": "ClassName for the widget, required field if adding type = widget", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "code": {
+                    "description": "LESS code", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "name": {
+                    "description": "The name of the preset", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "translationKey": {
+                    "description": "An optional translation key if the preset is visible to users in some way", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "default": "widget", 
+                    "description": "The type of preset, e.g. widget, theme or global", 
+                    "enum": [
+                        "widget", 
+                        "theme", 
+                        "global"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "widgetRef": {
+                    "description": "If type is widget, the valid widget reference to filter by", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a new preset", 
+            "uri": "/presets"
+        }, 
+        "CreatePresetAttribute": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "name": {
+                    "description": "The name of the attribute", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "value": {
+                    "description": "The value of the attribute", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Add a new site preset attribute", 
+            "uri": "/sites/{siteRef}/preset-attributes"
+        }, 
+        "DeletePreset": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "presetAttributeName": {
+                    "description": "The name of the preset in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Delete a preset from the database", 
+            "uri": "/presets/{presetAttributeName}"
+        }, 
+        "DeletePresetAttribute": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "presetAttributeName": {
+                    "description": "The name of the preset attribute in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a site preset attribute from the database", 
+            "uri": "/sites/{siteRef}/preset-attributes/{presetAttributeName}"
+        }, 
+        "GetCs": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "filterValue": {
+                    "description": "Value of filter, for example widget.button", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "presetType": {
+                    "description": "Preset type to load CSS for", 
+                    "enum": [
+                        "theme", 
+                        "widget", 
+                        "global"
+                    ], 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns concatenated, compressed CSS styles and headers for specified widget/theme/row/global", 
+            "uri": "/css/{presetType}/{filterValue}"
+        }, 
+        "GetPreset": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "presetAttributeName": {
+                    "description": "The name of the preset in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "default": "css", 
+                    "description": "The format of the code, less or css", 
+                    "enum": [
+                        "css", 
+                        "less"
+                    ], 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a single preset", 
+            "uri": "/presets/{presetAttributeName}"
+        }, 
+        "GetPresets": {
+            "httpMethod": "GET", 
+            "summary": "Get a list of all presets", 
+            "uri": "/presets"
+        }, 
+        "GetSitesPresetAttribute": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "presetAttributeName": {
+                    "description": "The name of the preset attribute in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a single site preset attribute", 
+            "uri": "/sites/{siteRef}/preset-attributes/{presetAttributeName}"
+        }, 
+        "GetSitesPresetAttributes": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all site preset attributes", 
+            "uri": "/sites/{siteRef}/preset-attributes"
+        }, 
+        "UpdatePreset": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "className": {
+                    "description": "ClassName for the widget, required field if adding type = widget", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "code": {
+                    "description": "LESS code", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "name": {
+                    "description": "The name of the preset", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "presetAttributeName": {
+                    "description": "The name of the preset in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "translationKey": {
+                    "description": "An optional translation key if the preset is visible to users in some way", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "default": "widget", 
+                    "description": "The type of preset, e.g. widget, theme or global", 
+                    "enum": [
+                        "widget", 
+                        "theme", 
+                        "global"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "widgetRef": {
+                    "description": "If type is widget, the valid widget reference to filter by", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Change the stored properties of a preset", 
+            "uri": "/presets/{presetAttributeName}"
+        }, 
+        "UpdatePresetAttribute": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "presetAttributeName": {
+                    "description": "The name of the preset attribute in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "value": {
+                    "description": "The preset attributes value in question", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Change the stored properties of a preset attribute", 
+            "uri": "/sites/{siteRef}/preset-attributes/{presetAttributeName}"
+        }, 
+        "UpdatePresetAttributes": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "siteRef": {
+                    "description": "The ID of the site in question", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "values": {
+                    "description": "JSON encoded string,this will add the values if they do not exist. i.e. {\"color1\":\"06ff22d\",\"color2\":\"ac2024\"}", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update or create new attribute values if they do not exist", 
+            "uri": "/sites/{siteRef}/preset-attributes"
+        }
+    }
+}

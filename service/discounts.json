@@ -1,0 +1,140 @@
+{
+    "operations": {
+        "CreateDiscount": {
+            "httpMethod": "POST",
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand where the discount will be available",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "accountHolderRef": {
+                    "description": "User for whom the discount is available",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "packageRef": {
+                    "description": "Package where the discount is applied",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name dislayed to the user after adding a discount",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "code": {
+                    "description": "Code of the discount",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "percentage": {
+                    "description": "percentage applied to the price of a package",
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "usageLimit": {
+                    "description": "Limit a discount can be used",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "expires": {
+                    "description": "End date of the discount",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "validity": {
+                    "description": "Discount validity period after being added to an order",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                }
+            },
+            "summary": "Create a discount",
+            "uri": "/brands/{brandRef}/discounts"
+        },
+        "UpdateDiscount": {
+            "httpMethod": "PUT",
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand where the discount will be available",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "discountRef": {
+                    "description": "Discount to update",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "Name dislayed to the user after adding a discount",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "usageLimit": {
+                    "description": "Limit a discount can be used",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "expires": {
+                    "description": "End date of the discount",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                }
+            },
+            "summary": "Update a discount",
+            "uri": "/brands/{brandRef}/discounts/{discountRef}"
+        },
+        "GetDiscounts": {
+            "httpMethod": "GET",
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand to get all discount",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "showExpired": {
+                    "description": "Display expired discounts",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                }
+            },
+            "summary": "List all discounts",
+            "uri": "/brands/{brandRef}/discounts"
+        },
+        "GetDiscount": {
+            "httpMethod": "GET",
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand to get the discount",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                },
+                "discountRef": {
+                    "description": "Discount to retrieve by ref",
+                    "location": "json",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "List a discount",
+            "uri": "/brands/{brandRef}/discounts/{discountRef}"
+        }
+    }
+}

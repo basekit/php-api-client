@@ -1,0 +1,50 @@
+{
+    "operations": {
+        "GetTranslation": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "languageCode": {
+                    "default": "en", 
+                    "description": "Language code e.g. ‘en’, ‘es’ etc", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "section": {
+                    "description": "Section translation key", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Something", 
+            "uri": "/translations/{languageCode}/{section}"
+        },
+        "UpdateTranslationSection": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "languageCode": {
+                    "default": "en", 
+                    "description": "Language code e.g. ‘en’, ‘es’ etc", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "section": {
+                    "description": "Section translation key", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "content": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "array"
+                }
+            }, 
+            "summary": "", 
+            "uri": "/translations/{languageCode}/{section}"
+        }
+    }
+}

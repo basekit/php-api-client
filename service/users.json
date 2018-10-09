@@ -1,64 +1,1544 @@
 {
     "operations": {
-
-        "CreateUser": {
-            "httpMethod": "POST",
-            "uri": "/users",
-            "summary": "Create a new user account",
+        "AddSite": {
+            "httpMethod": "POST", 
             "parameters": {
-
-                "brandRef": {
-                    "description": "Brand in which to create the user.",
-                    "location": "json",
-                    "required": true,
-                    "type": "numeric"
-                },
-
-                "username": {
-                    "description": "",
-                    "location": "json",
-                    "required": true,
-                    "type": "string"
-                },
-
-                "password": {
-                    "description": "Password for the new user. This must be more than 6 characters in length.",
-                    "location": "json",
-                    "required": true,
-                    "type": "string"
-                },
-
-                "email": {
-                    "description": "E-mail address of the user. Must be a valid e-mail address e.g. name@domain.com.",
-                    "location": "json",
-                    "required": true,
-                    "type": "string"
-                },
-
-                "firstName": {
-                    "description": "First name of the user.",
-                    "location": "json",
-                    "required": true,
-                    "type": "string"
-                },
-
-                "lastName": {
-                    "description": "Last name of the user.",
-                    "location": "json",
-                    "required": true,
-                    "type": "string"
-                },
-
-                "languageCode": {
-                    "default": "en",
-                    "description": "Initial language code for the user. This can be manually changed by the user.",
-                    "location": "json",
-                    "required": true,
+                "siteRef": {
+                    "description": "Site reference to be associated with the user.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to be used.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add an association to the specified site reference to the user. This gives the user permission to login and edit the site. Note that this doesn’t transfer ownership completely, to do this see /sites/:siteRef/transfer.", 
+            "uri": "/users/{userRef}/site/{siteRef}"
+        }, 
+        "Addapaymentmethod": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User ref to add payment method to", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "paymentMethodRef": {
+                    "description": "The payment method ref to indicate the payment provider method", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "redirectURL": {
+                    "description": "Location provided by Payment Provider to redirect user to after successful payment", 
+                    "location": "json", 
+                    "required": true, 
                     "type": "string"
                 }
-
+            }, 
+            "summary": "Adds an account payment method to a user", 
+            "uri": "/users/{accountHolderRef}/paymentmethods"
+        }, 
+        "AddNote": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "body": {
+                    "description": "Note body", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "accountHolderRef": {
+                    "description": "userRef to retrieve notes for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add note to a user", 
+            "uri": "/users/{accountHolderRef}/notes"
+        }, 
+        "AddPackage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "billingFrequency": {
+                    "description": "Establish the billing frequency. Must be 1 or 12.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "metricsPath": {
+                    "description": "The path taken by the user to reach the metricsSource", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "metricsSource": {
+                    "description": "The source of the user creation, e.g. ‘controlpanel’", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to be subscribed to.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to be subscribed.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "addToBC": {
+                    "description": "Whether to add to the existing primary billing cycle. Must be 1 or 0.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Subscribe this user to the specified package reference.", 
+            "uri": "/users/{userRef}/account-packages"
+        }, 
+        "CancelUserAccount": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "ID of user to cancel", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Cancel a user’s account", 
+            "uri": "/users/{userRef}/cancel"
+        }, 
+        "CreateAssetAlbums": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "A title for the album", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a users asset album", 
+            "uri": "/users/{accountHolderRef}/assets/albums"
+        }, 
+        "CreateUser": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "address1": {
+                    "description": "Address 1 of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "address2": {
+                    "description": "Address 2 of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "beta": {
+                    "default": 0, 
+                    "description": "Allow for the user beta widgets.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ],
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Brand in which to create the user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "resellerRef": {
+                    "description": "Reseller which owns the user",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                },
+                "city": {
+                    "description": "City of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "company": {
+                    "description": "Company of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "country": {
+                    "description": "Country of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "currencyRef": {
+                    "description": "Initial currency for the user, selected from the Brand default if empty. This can be manually changed by the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "email": {
+                    "description": "E-mail address of the user. Must be a valid e-mail address e.g. name@domain.com.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "First name of the user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "default": "en", 
+                    "description": "Initial language code for the user. This can be manually changed by the user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "Last name of the user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "metricsPath": {
+                    "description": "The path taken by the user to reach the metricsSource", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "metricsSource": {
+                    "description": "The source of the user creation, e.g. ‘controlpanel’", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "newsletter": {
+                    "default": 0,
+                    "description": "Boolean, has the user opted-in to receiving marketing emails?",
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json",
+                    "required": false,
+                    "type": "numeric"
+                },
+                "password": {
+                    "description": "Password for the new user. This must be more than 6 characters in length.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "phoneNumber": {
+                    "description": "International phone number of the user (+NN.NNNNNNNNNNNxNNNN", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "postcode": {
+                    "description": "Postcode of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "state": {
+                    "description": "State of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "username": {
+                    "description": "",
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new user. You need to specify the brand in which to create the user.", 
+            "uri": "/users"
+        }, 
+        "CreateLoginHash": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "siteRef": {
+                    "description": "Site ref", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Create a one-time login URL for an account holder", 
+            "uri": "/users/{accountHolderRef}/auto-login"
+        }, 
+        "Deactivateanaccountpaymentmethod": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User ref to check for account payment method", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountPaymentMethodRef": {
+                    "description": "Ref of account payment method", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Deactivates an account payment method", 
+            "uri": "/users/{accountHolderRef}/paymentmethods/{accountPaymentMethodRef}"
+        }, 
+        "DeleteUser": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "hard": {
+                    "default": 0, 
+                    "description": "Hard delete a site if set to 1", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "source": {
+                    "description": "The source of the user deletion, e.g. ‘Control Panel’", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete user with the specified user reference. The user must be accessible and the delete method permitted by the caller.", 
+            "uri": "/users/{userRef}"
+        }, 
+        "Deleteadomain": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Account domain reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountHolderRef": {
+                    "description": "Account holder reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete account holder domain", 
+            "uri": "/users/{accountHolderRef}/domains/{accountDomainRef}"
+        }, 
+        "DeleteanAssetAlbum": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "albumRef": {
+                    "description": "Asset Album ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a specific users asset album", 
+            "uri": "/users/{accountHolderRef}/assets/albums/{albumRef}"
+        }, 
+        "Deleteasset": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "assetRef": {
+                    "description": "Uploaded asset ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Soft delete an account holders uploaded asset", 
+            "uri": "/users/{accountHolderRef}/assets/{assetRef}"
+        }, 
+        "Deleteasubdomain": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ID to retrieve subdomains for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "domainName": {
+                    "description": "Registered domain name to retrieve subdomains for. Example: server.com", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "subdomainRef": {
+                    "description": "Subdomain reference to be killed. Corresponds to DomainToSiteMap.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Removes a subdomain: both in local database and at remote DNS provider", 
+            "uri": "/users/{accountHolderRef}/domains/{domainName}/subdomains/{subdomainRef}"
+        }, 
+        "Forgottenpasswordmethod": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "email": {
+                    "description": "E-mail address of the user. Must be a valid e-mail address e.g. name@domain.com.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "loginLink": {
+                    "description": "Location that will send in mail to redirect user to password changes", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Send link to user’s mail for password changing", 
+            "uri": "/users/forgotten-password"
+        }, 
+        "GetSearch": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "token": {
+                    "description": "Something you want to find.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns a list of users with their websites if any", 
+            "uri": "/search"
+        }, 
+        "GetUser": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get user data for the specified user reference. The user must be accessible by the caller.", 
+            "uri": "/users/{userRef}"
+        }, 
+        "GetUsers": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "dateFrom": {
+                    "description": "Filter users created before that date", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Filter users created after that date", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "limit": {
+                    "default": 20, 
+                    "description": "Number of users to be returned.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offset": {
+                    "default": 0, 
+                    "description": "Offset of first user to be returned.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "username": {
+                    "description": "Filter users ny their name", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "showDeleted": {
+                    "default": 0, 
+                    "description": "Show deleted users in list", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all users in the caller’s scope. For an Internal Developer, this will list all users in the environment.", 
+            "uri": "/users"
+        }, 
+        "GetUsersAccountPackage": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountPackageRef": {
+                    "description": "The account package reference to list", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "Reference of the account holder having this account package", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List an account package of a user. This would return the billing cycle, the account payment method and the payment method also.", 
+            "uri": "/users/{userRef}/account-packages/{accountPackageRef}"
+        }, 
+        "GetUsersAccountPackages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "billingCycle": {
+                    "description": "Return billing cycle info with each package.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "boltOnCancelData": {
+                    "description": "Return the bolt on cancellation status of the account package. This will return whether the bolt on package can be cancelled/removed and also whether it can be cancelled from the account screen.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "contentType": {
+                    "description": "Only return subscribed packages which are of content type passed in.", 
+                    "enum": [
+                        "domain", 
+                        "template", 
+                        "bundle", 
+                        "widget", 
+                        "mail", 
+                        "siteLock"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User reference to be subscribed.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List packages a user is subscribed to. Optionally return billing cycle info", 
+            "uri": "/users/{userRef}/account-packages"
+        }, 
+        "GetUsersAsset": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "assetRef": {
+                    "description": "Uploaded asset ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get metadata for a specified user account and asset", 
+            "uri": "/users/{accountHolderRef}/assets/{assetRef}"
+        }, 
+        "GetUsersAssets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "deleted": {
+                    "description": "Whether to return only deleted files (1) or all files regardless of deleted status (0). If param is not set, only non-deleted files are returned by default", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "excludeFileExtension": {
+                    "description": "File extension to exclude, e.g. ‘ico’.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "fileName": {
+                    "description": "Search asset fileNames with this string", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "folder": {
+                    "description": "Folder asset has been assigned to", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "limit": {
+                    "description": "Limit the amount of files to return", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offset": {
+                    "description": "Where to start getting the results from", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "siteRefs": {
+                    "description": "Comma separated list of siteRefs to filter assets by", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortBy": {
+                    "description": "Sort order to return (updated | fileName)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortOrder": {
+                    "description": "Sort order to return (ASC | DESC)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "tag": {
+                    "description": "Text tag(s) to search within assets", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "File type filter to apply (images | files | media)", 
+                    "enum": [
+                        "files", 
+                        "images", 
+                        "media"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of assets for a specified user account, optionally filtered by tag or type", 
+            "uri": "/users/{accountHolderRef}/assets"
+        }, 
+        "GetUsersAssetsAlbum": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "albumRef": {
+                    "description": "Asset Album ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a specific users asset album", 
+            "uri": "/users/{accountHolderRef}/assets/albums/{albumRef}"
+        }, 
+        "GetUsersAssetsAlbums": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a users asset albums", 
+            "uri": "/users/{accountHolderRef}/assets/albums"
+        }, 
+        "GetUsersBillingCycle": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder reference that the cycle belongs to (a check that the cycle actually belongs to the holder must be implemented)", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "billingCycleRef": {
+                    "description": "Billing cycle ref or the text ‘primary’ to return the primary billing cycle (subscription billing cycle)", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer / string"
+                }
+            }, 
+            "summary": "returns billing cycle info", 
+            "uri": "/users/{accountHolderRef}/billing-cycles/{billingCycleRef}"
+        }, 
+        "GetUsersCapabilities": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all the editor capabilities of the user with the specified user reference. The capabilities are gathered from a user’s package, brand and environment. The user must be accessible by the caller.", 
+            "uri": "/users/{userRef}/capabilities"
+        }, 
+        "GetUsersCapability": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "capabilityName": {
+                    "description": "Named capability property.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a single editor capability property of the user with the specified user reference. The capabilities are gathered from a user’s package, brand and environment. The user must be accessible by the caller.", 
+            "uri": "/users/{userRef}/capability/{capabilityName}"
+        }, 
+        "GetUserDomains": {
+            "uri": "/users/{accountHolderRef}/domains",
+            "httpMethod": "GET", 
+            "summary": "List domains for a user even if a domain doesn’t have a site associated", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ID to retrieve subdomains for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "domainType": {
+                    "description": "Type of domain to filter by. By default only the active domains purchased via Basekit are returned, and the Ref field is a AccountDomain reference. If type ‘mapped’ is set, the active domains bought elsewhere are returned, with Ref field pointing to DomainToSiteMap reference.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string",
+                    "enum": [
+                        "purchased",
+                        "mapped"
+                    ]
+                }
+            }
+        }, 
+        "GetUsersDomainsSubdomains": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ID to retrieve subdomains for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "domainName": {
+                    "description": "Registered domain name to retrieve subdomains for. Example: server.com", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "List subdomains for a user’s domain name", 
+            "uri": "/users/{accountHolderRef}/domains/{domainName}/subdomains"
+        }, 
+        "GetUsersInvoice": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "invoiceRef": {
+                    "description": "Invoice (payment transaction) ref to retrieve.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to retrieve invoice for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return specified invoice (paid transactions) for a specified user", 
+            "uri": "/users/{userRef}/invoices/{invoiceRef}"
+        }, 
+        "GetUsersInvoices": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Optional brand ref; retrieve only invoices for specified brand.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "dateFrom": {
+                    "description": "Retrieve only invoices from this date onwards.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "dateTo": {
+                    "description": "Retrieve only invoices up to this date.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "userRef": {
+                    "description": "User reference to retrieve all invoices for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all invoices (paid transactions) for a specified user", 
+            "uri": "/users/{userRef}/invoices"
+        }, 
+        "GetUserNotes": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "userRef to retrieve notes for", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Retrieves notes associated with a user", 
+            "uri": "/users/{accountHolderRef}/notes"
+        }, 
+        "GetUsersOrders": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to retrieve all orders for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all orders for a specified user", 
+            "uri": "/users/{userRef}/orders"
+        }, 
+        "GetUsersOrdersPending": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to retrieve all pending orders for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all pending orders for a specified user", 
+            "uri": "/users/{userRef}/orders/pending"
+        }, 
+        "GetUsersPaymentmethod": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User ref to return payment methods", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountPaymentMethodRef": {
+                    "description": "Ref of account payment method", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns an account payment method", 
+            "uri": "/users/{accountHolderRef}/paymentmethods/{accountPaymentMethodRef}"
+        }, 
+        "GetUsersPaymentmethods": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "User ref to return payment methods", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "active": {
+                    "description": "Flag to indicate the return results are filtered by account payment methods which are active", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "auto": {
+                    "description": "Flag to indicate the return results are filtered by payment methods which are recurring but not auto recurring i.e Not Paypal (auto recurring) and Not NRT (not recurring)", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "billingCycleData": {
+                    "description": "Flag to indicate whether to return the details of packages being paid for and currency", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "paymentMethodData": {
+                    "description": "Flag to indicate whether to return the payment method information i.e auto recurring, recurring etc", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Returns a list of users account payment methods", 
+            "uri": "/users/{accountHolderRef}/paymentmethods"
+        }, 
+        "GetUserSites": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "deleted": {
+                    "description": "Lists the deleted sites also.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "getMapped": {
+                    "default": 0, 
+                    "description": "Lists the mapped sites, not just the owned sites.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "accountHolderRef": {
+                    "description": "Site list for user reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }
+            }, 
+            "summary": "Get all the sites owned by the user with the specified user reference. The user must be accessible by the caller.", 
+            "uri": "/users/{accountHolderRef}/sites"
+        }, 
+        "GetUserSitesDomains": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "Site list for user reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "", 
+            "uri": "/users/{userRef}/sites/domains"
+        },
+        "GetUsersTours": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to retrieve all tours for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Return all tours that a user has seen", 
+            "uri": "/users/{userRef}/tours"
+        },
+        "AddUsersTours": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "User reference to add a tour to.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "tourRef": {
+                    "description": "Tour reference to add to the user.", 
+                    "location": "query", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a tour to a user to indicate they have seen it", 
+            "uri": "/users/{userRef}/tours"
+        }, 
+        "GetUserWidgets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "mobile": {
+                    "description": "Used to get mobile widgets only", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string",
+                    "enum": [
+                        "0",
+                        "1"
+                    ]
+                }, 
+                "accountHolderRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all the widgets available to the user", 
+            "uri": "/users/{accountHolderRef}/widgets"
+        }, 
+        "GetAnUploadToken": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Returns a single use upload token for method POST /users/:accountHolderRef/assets", 
+            "uri": "/users/{accountHolderRef}/upload-tokens"
+        }, 
+        "Passwordreset": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "hash": {
+                    "description": "Identifying hash", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "password": {
+                    "description": "New password", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Reset an account holder’s password via a hash. Hash expires in 2 hours from creation.", 
+            "uri": "/users/reset-password"
+        }, 
+        "Registerasubdomain": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Account domain reference to create subdomains for.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountHolderRef": {
+                    "description": "Account holder ID to retrieve subdomains for.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "domainName": {
+                    "description": "Registered domain name to retrieve subdomains for. Example: server.com", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "subdomain": {
+                    "description": "Valid subdomain prefix (e.g. blog, news or shop). Trailing dot is ignored", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "targetDomain": {
+                    "description": "Full domain name or IP address where the subdomain DNS is pointed to", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a subdomain for a users already registered domain name", 
+            "uri": "/users/{accountHolderRef}/domains/{domainName}/subdomains"
+        }, 
+        "RemoveSite": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "siteRef": {
+                    "description": "Site reference to be de-associated with the user.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to be used.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove an association to the specified site reference to the user. This will prevent the user from logging in and editing the site.", 
+            "uri": "/users/{userRef}/site/{siteRef}"
+        }, 
+        "Removepackage": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "accountPackageRef": {
+                    "description": "AccountPackage reference to unsubscribe the user from.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "metricsPath": {
+                    "description": "The path taken by the user to reach the metricsSource", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "metricsSource": {
+                    "description": "The source of the user creation, e.g. ‘controlpanel’", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteLockRef": {
+                    "description": "Domain site lock ref if deleting a site lock bolt on.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to be unsubscribed.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Unsubscribe this user from the accountPackageRef.", 
+            "uri": "/users/{userRef}/account-packages/{accountPackageRef}"
+        }, 
+        "SuspendUser": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "ID of user to suspend", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Suspend a user’s account", 
+            "uri": "/users/{userRef}/suspend"
+        }, 
+        "UnsuspendUser": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "userRef": {
+                    "description": "ID of user to unsuspend", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Unsuspend a user’s account", 
+            "uri": "/users/{userRef}/unsuspend"
+        }, 
+        "UpdateUser": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountPaymentMethodRef": {
+                    "description": "The default account payment method for future purchasing.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "address1": {
+                    "description": "Address 1 of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "address2": {
+                    "description": "Address 2 of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "beta": {
+                    "default": 0, 
+                    "description": "Allow for the user beta widgets.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Brand in which to create the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "city": {
+                    "description": "City of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "company": {
+                    "description": "Company of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "country": {
+                    "description": "Country of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "cpfCompany": {
+                    "default": 0, 
+                    "description": "To indicate that the CPF number should be validated as a company CNPJ.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ],
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "cpfNumber": {
+                    "description": "Must be a valid CPF/CNPJ number.  If also passing in cpfCompany = 1 the validation will check for CNPJ as opposed to CPF.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "currencyCode": {
+                    "description": "Currency code for the user. This can be manually changed by the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "currencyRef": {
+                    "description": "Currency of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "deleted": {
+                    "default": 0, 
+                    "description": "Set this to 0 to reverse soft deletion.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ],
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "email": {
+                    "description": "E-mail address of the user. Must be a valid e-mail address e.g. name@domain.com.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "endpointPath": {
+                    "description": "Can be a path or output URL (directory prefix).", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "firstName": {
+                    "description": "First name of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageCode": {
+                    "description": "Current language code for the user. This can be manually changed by the user.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "lastName": {
+                    "description": "Last name of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "password": {
+                    "description": "Password of ther user. This must be more than 6 characters in length.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "phoneNumber": {
+                    "description": "International phone number of the user (+NN.NNNNNNNNNNNxNNNN", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "postcode": {
+                    "description": "Postcode of the user.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "state": {
+                    "description": "State in which the user lives", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "storageBytesUsed": {
+                    "description": "storageBytesUsed", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "userRef": {
+                    "description": "User reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "userStoragePath": {
+                    "description": "Location of users file-based filemanager assets.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "username": {
+                    "description": "Username of the user. Typically this is the e-mail address, but it may be different. This must be more than 6 characters in length.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update user with the specified user reference. The user must be accessible and the update method permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/users/{userRef}"
+        }, 
+        "Updateadomain": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountDomainRef": {
+                    "description": "Account domain reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "accountHolderRef": {
+                    "description": "Account holder reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "autoRenew": {
+                    "default": 0, 
+                    "description": "Flag that indicates if the domain should be automatically renewed", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Currently it updates autoRenew flag only", 
+            "uri": "/users/{accountHolderRef}/domains/{accountDomainRef}"
+        }, 
+        "UpdateanAssetAlbum": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "albumRef": {
+                    "description": "Asset Album ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "title": {
+                    "description": "Asset Album title", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update a specific users asset album", 
+            "uri": "/users/{accountHolderRef}/assets/albums/{albumRef}"
+        }, 
+        "Updateassetmetadata": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Account holder ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "assetRef": {
+                    "description": "Uploaded asset ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "Description of the uploaded asset", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "folder": {
+                    "description": "Folder of the uploaded asset", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "title": {
+                    "description": "Title of the uploaded asset", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update metadata for an account holders uploaded asset", 
+            "uri": "/users/{accountHolderRef}/assets/{assetRef}"
+        },
+        "GetUserNotificationsGroups": {
+            "httpMethod": "GET",
+            "uri": "/users/{accountHolderRef}/notifications/groups",
+            "parameters": {
+                "accountHolderRef": {
+                    "location":"uri",
+                    "required":true
+                }
+            }
+        },
+        "UpdateNotification": {
+            "httpMethod": "PUT",
+            "uri": "/users/{userRef}/notifications/{notificationRef}",
+            "parameters": {
+                "userRef": {
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "notificationRef": {
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "resolved": {
+                    "location": "json",
+                    "required": false,
+                    "type": "integer"
+                }
             }
         }
-
     }
 }

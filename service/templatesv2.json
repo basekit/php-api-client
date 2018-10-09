@@ -1,0 +1,321 @@
+{
+    "operations": {
+        "AddTemplateTag": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "tagRef": {
+                    "description": "The tag to be added to the template", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "The template to which a tag is to be added", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add a tag to a template", 
+            "uri": "/v2/templates/{templateRef}/tags"
+        }, 
+        "Createv7Template": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Optionally associate the template with an account holder", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "defaultColorSwatchRef": {
+                    "description": "The ref of a color swatch to be this template’s default", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "defaultFontSwatchRef": {
+                    "description": "The ref of a font swatch to be this template’s default", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "directory": {
+                    "description": "The directory in which the template’s files are located", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "githubRepository": {
+                    "description": "The URL of a GitHub repository for this template on GitHub", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageRef": {
+                    "description": "Optionally associate the template with a language", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "The name of the new template", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "pageTypes": {
+                    "description": "A list of page types available in this template", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "private": {
+                    "default": 0, 
+                    "description": "Whether the GitHub repository is private or not", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "screenshot": {
+                    "description": "The URL of a screenshot image", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "thumbnail": {
+                    "description": "The URL of a thumbnail image", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "tier": {
+                    "description": "The tier of the template (higher tiers cost more)", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "", 
+            "uri": "/v2/templates"
+        }, 
+        "GetV2Template": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "templateRef": {
+                    "description": "The ref of the template to load", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Load a template by ref", 
+            "uri": "/v2/templates/{templateRef}"
+        }, 
+        "GetV2Templates": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Return only templates belonging to the given account holder. By default this service only returns templates with no owner", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "category": {
+                    "description": "Return only templates with a category matching the given value. No restriction is placed on category by default.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "categoryRef": {
+                    "description": "Return only templates with the given categoryRef. No restriction is placed on categoryRef by default.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "languageRef": {
+                    "description": "Return only templates with the given languageRef. By default this service only returns templates with a NULL languageRef..", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "sortBy": {
+                    "description": "A template property by which to sort the list", 
+                    "enum": [
+                        "defaultColorSwatchRef", 
+                        "defaultFontSwatchRef", 
+                        "directory", 
+                        "githubRepository", 
+                        "name", 
+                        "private", 
+                        "ref", 
+                        "tier"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "sortOrder": {
+                    "description": "The order in which to sort the list", 
+                    "enum": [
+                        "ASC", 
+                        "DESC"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "tag": {
+                    "description": "Return only templates with the given tag. No restriction is placed on tag by default.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "tagRef": {
+                    "description": "Return only templates with the given tagRef. No restriction is placed on tagRef by default.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Search for templates by parameter", 
+            "uri": "/v2/templates"
+        }, 
+        "GetV2TemplatesGroups": {
+            "httpMethod": "GET", 
+            "summary": "Get all template groups", 
+            "uri": "/v2/templates/groups"
+        },
+        "GetV2TemplatesCategories": {
+            "httpMethod": "GET",
+            "summary": "Get all template categories",
+            "uri": "/v2/templates/categories"
+        }, 
+        "GetV2TemplatesTags": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "templateRef": {
+                    "description": "The ref of a template whose tags are to be found", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all tags associated with a template", 
+            "uri": "/v2/templates/{templateRef}/tags"
+        }, 
+        "RemoveTemplateTag": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "tagRef": {
+                    "description": "The tag to be removed from the template", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "The template from which a tag is to be removed", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove a tag from a template", 
+            "uri": "/v2/templates/{templateRef}/tags/{tagRef}"
+        }, 
+        "UpdateV7Template": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountHolderRef": {
+                    "description": "Optionally associate the template with an account holder", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "defaultColorSwatchRef": {
+                    "description": "The ref of a color swatch to be this template’s default", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "defaultFontSwatchRef": {
+                    "description": "The ref of a font swatch to be this template’s default", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "directory": {
+                    "description": "The directory in which the template’s files are located", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "githubRepository": {
+                    "description": "The URL of a git repository for this template on GitHub", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "languageRef": {
+                    "description": "Optionally associate the template with a language", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "name": {
+                    "description": "The name of the template", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "pageTypes": {
+                    "description": "A list of page types available in this template", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "private": {
+                    "default": 0, 
+                    "description": "Whether the GitHub repository is private or not", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "screenshot": {
+                    "description": "The URL of a screenshot image", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "templateRef": {
+                    "description": "The ref of the template to update", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "thumbnail": {
+                    "description": "The URL of a thumbnail image", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "tier": {
+                    "description": "The tier of the template (higher tiers cost more)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Update a template by ref", 
+            "uri": "/v2/templates/{templateRef}"
+        }
+    }
+}

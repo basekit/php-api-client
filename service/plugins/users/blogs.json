@@ -1,0 +1,19 @@
+{
+    "operations": {
+        "GetBlogsForUsers": {
+            "httpMethod": "GET",
+            "parameters": {
+                "userRef": {
+                    "default": 0,
+                    "description": "The account holder owning the blogs",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+
+            },
+            "summary": "Get all blogs from a user",
+            "uri": "/users/{userRef}/blogs"
+        }
+    }
+}

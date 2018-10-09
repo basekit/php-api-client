@@ -1,0 +1,934 @@
+{
+    "operations": {
+        "Addatour": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "displayName": {
+                    "description": "Tour display name that shows in the help section", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "tourID": {
+                    "description": "Tour My App ID", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "sectionName": {
+                    "description": "Name of the section which is picked up by the PHP/JS to display the tour", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Whether tour is active", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                },
+                "quickTour": {
+                    "description": "Whether tour should be displayed on the quick tours help link", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                }
+            }, 
+            "summary": "Adds a new tour to the brand.", 
+            "uri": "/brands/{brandRef}/tours"
+        },
+        "GetATour": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "tourRef": {
+                    "description": "Tour ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Gets a tour for the brand based upon tour ref.", 
+            "uri": "/brands/{brandRef}/tours/{tourRef}"
+        },
+        "CloneBrand": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "brandName": {
+                    "description": "A name for the new brand. Must not already be in use as a brand name", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "brandRef": {
+                    "description": "Brand reference of the brand being cloned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "cloneSwatches": {
+                    "default": "0", 
+                    "description": "Whether to clone color swatches", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packages": {
+                    "default": "none", 
+                    "description": "This parameter should be set to “all”, “none” or a JSON-encoded list of package references to clone, e.g. [1,2,3]. If you specify “all” or include the ref of the cloned brand’s default package in the packages list, that package will be set as the default package on the new brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Clone an existing brand and (optionally) packages associated with that brand. Restricted to system-owner and internal-developer roles only.", 
+            "uri": "/brands/{brandRef}/clone"
+        }, 
+        "DeleteBrand": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete brand with the specified brand reference. The brand must be accessible and the delete method permitted by the caller.", 
+            "uri": "/brands/{brandRef}"
+        }, 
+        "GetBrand": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                },
+                "embed": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string",
+                    "enum": [
+                        "currencies"
+                    ]
+                }
+            }, 
+            "summary": "Get brand data for the specified brand reference. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}"
+        }, 
+        "GetBrands": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "embed": {
+                    "description": "",
+                    "location": "query",
+                    "required": false,
+                    "type": "string",
+                    "enum": [
+                        "currencies"
+                    ]
+                }
+            },
+            "summary": "Get a list of all brands", 
+            "uri": "/brands"
+        }, 
+        "GetBrandsCapability": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "capabilityName": {
+                    "description": "Name of a brand capability retrieved from /brands/capabilities", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a single editor capability property of the user with the specified user reference. The capabilities are gathered from a user’s package, brand and environment. The user must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/capability/{capabilityName}"
+        }, 
+        "GetBrandsContentMapSites": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "blueprint": {
+                    "description": "Restrict the set of returned content map sites by their ‘blueprint’ flag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Retrieve content map sites for this brand reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "contentMapSiteCategory": {
+                    "description": "The name of a content map site category by which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "contentMapSiteCategoryRef": {
+                    "description": "The ref of a content map site category by which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "ecommerce": {
+                    "description": "Restrict the set of returned content map sites by their ‘ecommerce’ flag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "languageRef": {
+                    "description": "The ref of a language which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "tag": {
+                    "description": "Filter by tag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of all content map site (titles) available to a brand. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/content-map-sites"
+        }, 
+        "GetBrandsCurrencies": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Retrieve currencies for this brand reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all currencies available to a brand. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/currencies"
+        }, 
+        "GetBrandsDomainTlds": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "limit": {
+                    "default": 5, 
+                    "description": "Maximum number of TLDs to be returned", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List available domain name extensions (TLDs) for the brand, in order. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/domain-tlds"
+        }, 
+        "GetBrandsLanguages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Retrieve languages for this brand reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all languages available to a brand. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/languages"
+        }, 
+        "GetBrandPackages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "active": {
+                    "default": 1, 
+                    "description": "Package active", 
+                    "enum": [
+                        1, 
+                        0
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "billingPeriodMonths": {
+                    "description": "Price billing period in months", 
+                    "enum": [
+                        0, 
+                        1, 
+                        12
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "brandRef": {
+                    "description": "Retrieve packages for this brand ref.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "categoryRef": {
+                    "description": "Category filter (category type ref)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "contentType": {
+                    "description": "Package content type", 
+                    "enum": [
+                        "bundle", 
+                        "domain", 
+                        "template", 
+                        "widget", 
+                        "application", 
+                        "service", 
+                        "capability"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "currencyRef": {
+                    "description": "Price currencyRef", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "numeric"
+                }, 
+                "locale": {
+                    "description": "The locale for which to format any package prices", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "productType": {
+                    "description": "Package product type", 
+                    "enum": [
+                        "one-off", 
+                        "add-on", 
+                        "subscription", 
+                        "domain"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "showInStore": {
+                    "description": "Show this package in store", 
+                    "enum": [
+                        1, 
+                        0
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "showInTemplatePicker": {
+                    "description": "", 
+                    "enum": [
+                        1, 
+                        0
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "type": {
+                    "description": "Package type", 
+                    "enum": [
+                        "standard", 
+                        "offer", 
+                        "demo"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get a list of all packages in this brand. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/packages"
+        }, 
+        "GetBrandsPaymentmethods": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "authorizable": {
+                    "description": "Flag to indicate the return results are filtered by payment methods which are authorizable (i.e can perform a pre-auth check on).", 
+                    "enum": [
+                        0, 
+                        1
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "brandRef": {
+                    "description": "Brand ref to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "currencyRef": {
+                    "description": "Currency ref to get associated payment methods.  If passed in the intersection of brand and currency payment methods are returned.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List available payment methods associated to the brand.  Optionally pass in the currencyRef to retrieve brand AND currency associated methods.", 
+            "uri": "/brands/{brandRef}/paymentmethods"
+        }, 
+        "GetBrandsTemplates": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "blueprint": {
+                    "description": "Restrict the set of returned templates by their ‘blueprint’ flag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Retrieve templates for this brand reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "ecommerce": {
+                    "description": "Restrict the set of returned templates by their ‘ecommerce’ flag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "languageRef": {
+                    "description": "The ref of a language which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "tag": {
+                    "description": "Filter by tag", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "templateCategory": {
+                    "description": "The name of a template category by which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "templateCategoryRef": {
+                    "description": "The ref of a template category by which to filter", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get a list of all template (titles) available to a brand. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/templates"
+        }, 
+        "GetBrandsTours": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "sectionName": {
+                    "description": "Section name", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Get tours for the brand.", 
+            "uri": "/brands/{brandRef}/tours"
+        }, 
+        "GetV2BrandsPackagesTemplates": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package ref on brand", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get templates assigned to a package.", 
+            "uri": "/v2/brands/{brandRef}/packages/{packageRef}/templates"
+        }, 
+        "UpdateBrand": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "accountSidebarHTML": {
+                    "description": "Text for account panel for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "active": {
+                    "description": "Indicates whether this brand is the active.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "addressLine1": {
+                    "description": "Address line 1 of the brand address used on account invoices", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "addressLine2": {
+                    "description": "Address line 2 of the brand address used on account invoices", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "brandRef": {
+                    "description": "Brand reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "cancelSubscriptionURL": {
+                    "description": "Fully qualified URL to direct the user to if site’s account holder has cancelled their subscription", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "customScript": {
+                    "description": "HTML code to insert into the page view", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "defaultPackageRef": {
+                    "description": "Default package reference for registered users of the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "defaultRegion": {
+                    "description": "Default region code for users of the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "defaultTLD": {
+                    "description": "A single TLD (top level domain) set as default for users purchased domain names", 
+                    "enum": [
+                        ".co.uk", 
+                        ".com", 
+                        ".net", 
+                        ".org", 
+                        ".biz", 
+                        ".name", 
+                        ".info", 
+                        ".mobi", 
+                        ".eu", 
+                        ".es", 
+                        ".be", 
+                        ".me", 
+                        ".org.uk", 
+                        ".me.uk", 
+                        ".com.br", 
+                        ".mx", 
+                        ".com.mx"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "deletedSiteRedirectURL": {
+                    "description": "Fully qualified URL to direct the user to if the site is deleted", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "displayName": {
+                    "description": "Display name of the brand to be displayed to users.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "domain": {
+                    "description": "Live domain to be used by the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "domainMappingHelpURL": {
+                    "description": "The URL of a page explaining about domain mapping", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "email": {
+                    "description": "Primary e-mail contact for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "externalSubscriptionLink": {
+                    "description": "External subscription link for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "faviconURL": {
+                    "description": "Fully qualified URL to brand favicon", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "flickrDefaultSearch": {
+                    "description": "Flickr default search link for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "flowName": {
+                    "description": "The name of an application flow", 
+                    "enum": [
+                        "classic"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "googleFont": {
+                    "description": "Google Font versions", 
+                    "enum": [
+                        "latin",
+                        "latin-ext",
+                        "cyrillic",
+                        "cyrillic-ext"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "helpURL": {
+                    "description": "Help URL for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "internal": {
+                    "description": "Indicates whether this brand is internal.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "invoiceFooter": {
+                    "description": "Footer text to show in the account invoices", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "learningCentreURL": {
+                    "description": "Learning centre URL", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "liveChatSkillID": {
+                    "description": "liveChatSkill ID for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "localDomain": {
+                    "description": "Local development domain to be used by the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "logoImageURL": {
+                    "description": "Location of a logo image for use in the navigation bar", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "name": {
+                    "description": "Name of the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "nrtURL": {
+                    "description": "NRT URL", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "postcode": {
+                    "description": "Postcode of the brand address used on account invoices", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "preferredDomain": {
+                    "description": "Preferred domain option, that define how newly added domain name will used as primary domain", 
+                    "enum": [
+                        "never", 
+                        "nonbranddomain", 
+                        "nonbranddomainwww", 
+                        "always"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "preferredPackageRef": {
+                    "description": "Preferred package reference.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "publishDomain": {
+                    "description": "The main TLD which basekit subdomains will be created on, typically bksites.net", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "restrictPaymentPeriods": {
+                    "description": "Bit mask of restricted payment periods", 
+                    "enum": [
+                        "Allow all payments", 
+                        "No monthly payments", 
+                        "No annual payments", 
+                        "Disable all payments"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "rssDomain": {
+                    "description": "RSS domain link for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "seoLang": {
+                    "description": "2 letter language code i.e ‘en’ or ‘es’", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "siteListHTML": {
+                    "description": "Text for site list for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "stagingDomain": {
+                    "description": "Staging domain to be used by the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "supportEmail": {
+                    "description": "Support e-mail address for users of the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "suspendedSiteRedirectURL": {
+                    "description": "Fully qualified URL to direct the user to if site is suspended", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "templatePickerURL": {
+                    "description": "External URL to override the templates.environment.domain redirect when logging into a site without content", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "townCity": {
+                    "description": "Town city of the brand address used on account invoices", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "twitterAccount": {
+                    "description": "Twitter account name for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "underConstructionURL": {
+                    "description": "Fully qualified URL to direct the user to if site has not been previously been published", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "unsubscribeURL": {
+                    "description": "Unsubscribe link for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "zenDeskLocaleID": {
+                    "description": "zenDesk locale ID for the brand.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                },
+                "helpGettingStartedURL": {
+                    "description": "Link to the getting started help article to be shown in the help dropdown",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "helpCommonMistakesURL": {
+                    "description": "Link to the common mistakes help article to be shown in the help dropdown",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "helpDocumentationURL": {
+                    "description": "Link to the brand documentation to be shown in the help dropdown",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
+                "capabilities": {
+                    "description": "Any brand capabilities to be updated",
+                    "location": "json",
+                    "required": false,
+                    "type": "array"
+                },
+                "defaultBillingPeriodMonths": {
+                    "description": "The default billing period for this brand, in months",
+                    "location": "json",
+                    "required": false,
+                    "type": "integer",
+                    "enum": [
+                        "1",
+                        "12"
+                    ]
+                }
+            }, 
+            "summary": "Update brand with the specified brand reference. The brand must be accessible and the update method permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/brands/{brandRef}"
+        }, 
+        "UpdateDomainNameExtensions": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "tlds": {
+                    "description": "Array of tlds like this : tlds[]=.co.uk&tlds[]=.net&tlds[]=.com  ;   The TLDs must correspond to those returned in the corresponding GET call - all this method does is allow you to set the ordering which is returned. Add domain product’s if you want to update the supported TLDs for a brand", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "array"
+                }
+            }, 
+            "summary": "List available domain name extensions (TLDs) for the brand, in order. The brand must be accessible by the caller.", 
+            "uri": "/brands/{brandRef}/domain-tlds"
+        }, 
+        "Updatesatour": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "brandRef": {
+                    "description": "Brand ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "tourRef": {
+                    "description": "Tour ref", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                },
+                "displayName": {
+                    "description": "Tour display name that shows in the help section", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                },
+                "sectionName": {
+                    "description": "Name of the section which is picked up by the PHP/JS to display the tour", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                },
+                "active": {
+                    "description": "Whether tour is active", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                },
+                "quickTour": {
+                    "description": "Whether tour should be displayed on the quick tours help link", 
+                    "location": "json", 
+                    "required": false, 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ]
+                }
+            }, 
+            "summary": "Updates a brand tour.", 
+            "uri": "/brands/{brandRef}/tours/{tourRef}"
+        }
+    }
+}

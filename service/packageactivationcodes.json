@@ -1,0 +1,63 @@
+{
+    "operations": {
+        "AddActivationCodes": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "codes": {
+                    "description": "An array of codes", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "array"
+                }, 
+                "vendor": {
+                    "default": "sage-one", 
+                    "description": "", 
+                    "enum": [
+                        "sage-one"
+                    ], 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new package activation code", 
+            "uri": "/activation-codes/{vendor}"
+        }, 
+        "GetActivationCodes": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "issued": {
+                    "description": "", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "vendor": {
+                    "default": "sage-one", 
+                    "description": "", 
+                    "enum": [
+                        "sage-one"
+                    ], 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Retrieve a list of package activation codes", 
+            "uri": "/activation-codes/{vendor}"
+        },
+        "SendActivationCode": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "activationCodeUsageRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Resend an activation code e-mail", 
+            "uri": "/activation-codes/used/{activationCodeUsageRef}/send"
+        }
+    }
+}

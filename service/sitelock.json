@@ -1,0 +1,23 @@
+{
+    "operations": {
+        "GetSiteDomainSiteLockScans": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "siteRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "domainRef": {
+                    "description": "", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }
+            }, 
+            "summary": "", 
+            "uri": "/sites/{siteRef}/domains/{domainRef}/site-lock/scans"
+        }
+    }
+}

@@ -1,0 +1,126 @@
+{
+    "operations": {
+        "Createcategory": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "category": {
+                    "description": "Name of created category", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "parentRef": {
+                    "description": "Parent ref to associate with existing category as child category", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "default": "theme", 
+                    "description": "Category type", 
+                    "enum": [
+                        "template", 
+                        "theme", 
+                        "package"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create hierarchical list of business categories available to themes and templates", 
+            "uri": "/categories"
+        }, 
+        "Deletecategory": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "categoryRef to delete", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete a category by categoryRef", 
+            "uri": "/categories/{categoryRef}"
+        }, 
+        "GetCategories": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "brandRef": {
+                    "description": "If package count is required also filter by packages attached to the brandRef", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "getPackageCount": {
+                    "default": 0, 
+                    "description": "Return the number of packages attached to the category (if type set to package)", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "parentRef": {
+                    "description": "Filter for category parent ref (group)", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Filter for category type [theme | template | package]", 
+                    "enum": [
+                        "theme", 
+                        "template", 
+                        "package"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Return hierarchical list of business categories", 
+            "uri": "/categories"
+        }, 
+        "Updatecategory": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "category": {
+                    "description": "Name of created category", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "categoryRef": {
+                    "description": "Category ref if updating", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "parentRef": {
+                    "description": "Parent ref to associate with existing category as child category", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "default": "theme", 
+                    "description": "Category type", 
+                    "enum": [
+                        "template", 
+                        "theme", 
+                        "package"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update hierarchical list of business categories available to themes and templates", 
+            "uri": "/categories/{categoryRef}"
+        }
+    }
+}

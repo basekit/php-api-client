@@ -1,0 +1,845 @@
+{
+    "operations": {
+        "Add/UpdatePackageCapabilities": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "allowPublish": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "allowUpload": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "allowUsers": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "cdnEnabled": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "cssEditing": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "description": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "text"
+                }, 
+                "details": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "text"
+                }, 
+                "domainMapping": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "ecommerceAllowed": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "features": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "text"
+                }, 
+                "freeDomains": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "googleAdWordVoucher": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "googleAnalytics": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "htmlEditing": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "liveSites": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "multiSitePackage": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offer": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offerRebillMonths": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "pagesLimited": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "psdImport": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "singleSitePackage": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "storageLimit": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "summary": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "text"
+                }, 
+                "themeLevel": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "trialDays": {
+                    "description": "", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "widgetsLimited": {
+                    "description": "", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Add or update predefined capabilities of a package with the specified package reference. The package must be accessible and the PUT method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/capabilities"
+        }, 
+        "AddPackageCategories": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category reference to be associated with template.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "numeric"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to associate.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }
+            }, 
+            "summary": "Add a category to a package. The package must be accessible and the post method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/categories"
+        }, 
+        "AddPackageContentMapSites-V2": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "contentMapSiteRef": {
+                    "description": "Content Map Site reference to add to package.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to associate with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List content map sites available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/content-map-sites"
+        }, 
+        "AddPackageTemplates-V1": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to associate with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Template reference to add to package.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List templates available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/templates"
+        }, 
+        "ClonePackage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "brandRef": {
+                    "description": "If a brandRef is not supplied then the clone package will have the same brandRef as the original package", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to be cloned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Clone a package based on a given packageRef. The package will inherit the brandRef if one is not explicitly supplied. ", 
+            "uri": "/packages/{packageRef}/clone"
+        }, 
+        "CreatePackage": {
+            "httpMethod": "POST", 
+            "parameters": {
+                "active": {
+                    "default": "false", 
+                    "description": "Indicates whether the package is actively used. Set this to zero if the package is deprecated. Effectivelt this will soft delete the package, but keep any user associations intact.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Brand which the package is used by.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "contentType": {
+                    "description": "Package content type", 
+                    "enum": [
+                        "bundle", 
+                        "domain", 
+                        "template", 
+                        "widget"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "defaultCurrencyRef": {
+                    "description": "Default currency ref (to currency code) used when displaying this package.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "freeDomains": {
+                    "description": "Number of purchaseable domain names included in price", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "global": {
+                    "default": "false", 
+                    "description": "Indicates whether the package should be globally available for subscription.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "liveSites": {
+                    "description": "Number of live sites to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "mobileSites": {
+                    "description": "Number of mobileSites allowed", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "notifyMarketing": {
+                    "description": "", 
+                    "enum": [
+                        "Y", 
+                        "N"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "offerNewPackageRef": {
+                    "description": "If the package is an offer and has a fixed period (see offerRebillMonths), this indicates the package reference that the user will move to after the offer period expires.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offerRebillMonths": {
+                    "description": "If an offer package, when to first rebill the user in months (0 - 36)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageName": {
+                    "description": "Name of the package.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "pagesLimited": {
+                    "description": "Maximum number of pages which can be published.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "productType": {
+                    "description": "Package product type", 
+                    "enum": [
+                        "one-off", 
+                        "add-on", 
+                        "subscription", 
+                        "domain"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "storageLimit": {
+                    "description": "Maximum bytes of file storage offered.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateTier": {
+                    "description": "Template tier levels [0, 1 or 2] to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "themeLevel": {
+                    "description": "Theme levels [0 or 1] to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "trialDays": {
+                    "description": "Number of days before demo/trial expires", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Package type", 
+                    "enum": [
+                        "standard", 
+                        "offer", 
+                        "demo"
+                    ], 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "string"
+                }, 
+                "urlID": {
+                    "description": "Selected redirection when returning to editor after purchase : One of ‘basic’, ‘bulk’, ‘demo’, ‘domain’, ‘plus’, ‘pro’, ‘sme’.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Create a new package. You need to specify the brand in which to create the package.", 
+            "uri": "/packages"
+        }, 
+        "DeletePackage": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to be deleted.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Delete package with the specified package reference. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}"
+        }, 
+        "DeletePackageCategories": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "categoryRef": {
+                    "description": "Category reference to be removed.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to remove.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Remove a category associated with a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/categories/{categoryRef}"
+        }, 
+        "GetPackage": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "locale": {
+                    "description": "The locale for which to format any package prices", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "numeric"
+                }
+            }, 
+            "summary": "Get package data for the specified package reference. The package must be accessible by the caller.", 
+            "uri": "/packages/{packageRef}"
+        }, 
+        "GetPackages": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "showInactive": {
+                    "description": "Filter to also return all deactivated packages.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all apckages.", 
+            "uri": "/packages"
+        }, 
+        "GetPackagesCapabilities": {
+            "httpMethod": "GET", 
+            "summary": "Provide list of all package capability defaults for prepopulating forms..", 
+            "uri": "/packages/capabilities"
+        }, 
+        "GetPackageCategories": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List all categories associated with a package. The package must be accessible and the get method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/categories"
+        }, 
+        "GetPackagesContentMapSites": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List content map sites available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/content-map-sites"
+        }, 
+        "GetPackagesPrices": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "billingPeriodMonths": {
+                    "description": "Period in months (1 or 12).", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "currencyRef": {
+                    "description": "Currency reference to filter by.", 
+                    "location": "query", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "Get all prices or a package, optionally filter by currency ref and billing period months.", 
+            "uri": "/packages/{packageRef}/prices"
+        }, 
+        "GetPackagesTemplates": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List templates available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/templates"
+        }, 
+        "GetPackagesWidgets": {
+            "httpMethod": "GET", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to be returned.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List widgets associated with a package", 
+            "uri": "/packages/{packageRef}/widgets"
+        }, 
+        "RemovePackageContentMapSites-V2": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "contentMapSiteRef": {
+                    "description": "Content Map Site reference to add to package.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to associate with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List content map sites available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/content-map-sites/{contentMapSiteRef}"
+        }, 
+        "RemovePackageTemplates-V1": {
+            "httpMethod": "DELETE", 
+            "parameters": {
+                "packageRef": {
+                    "description": "Package reference to associate with.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "templateRef": {
+                    "description": "Template reference to add to package.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }
+            }, 
+            "summary": "List templates available to a package. The package must be accessible and the delete method permitted by the caller.", 
+            "uri": "/packages/{packageRef}/templates/{templateRef}"
+        }, 
+        "UpdatePackage": {
+            "httpMethod": "PUT", 
+            "parameters": {
+                "active": {
+                    "default": "false", 
+                    "description": "Indicates whether the package is actively used. Set this to zero if the package is deprecated. Effectivelt this will soft delete the package, but keep any user associations intact.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "brandRef": {
+                    "description": "Brand which the package is used by.", 
+                    "location": "json", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "contentType": {
+                    "description": "Package content type", 
+                    "enum": [
+                        "bundle", 
+                        "domain", 
+                        "template", 
+                        "widget"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "defaultCurrencyRef": {
+                    "description": "Default currency ref (to currency code) used when displaying this package.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "displayOrder": {
+                    "description": "Order in which to display package, setting to 999 will reset.  If setting to 1, it will push forward (increment the order) on all other brand packages.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "freeDomains": {
+                    "description": "Number of purchaseable domain names included in price", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "global": {
+                    "default": "false", 
+                    "description": "Indicates whether the package should be globally available for subscription.", 
+                    "enum": [
+                        "0", 
+                        "1"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "liveSites": {
+                    "description": "Number of live sites to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "mobileSites": {
+                    "description": "Number of mobileSites allowed", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "notifyMarketing": {
+                    "description": "Whether to email marketing about subscribers (Y or N)", 
+                    "enum": [
+                        "Y", 
+                        "N"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "offerNewPackageRef": {
+                    "description": "If the package is an offer and has a fixed period (see offerRebillMonths), this indicates the package reference that the user will move to after the offer period expires.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "offerRebillMonths": {
+                    "description": "If an offer package, when to first rebill the user in months (0 - 36)", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "packageName": {
+                    "description": "Name of the package.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "packageRef": {
+                    "description": "Package reference to be updated.", 
+                    "location": "uri", 
+                    "required": true, 
+                    "type": "integer"
+                }, 
+                "pagesLimited": {
+                    "description": "Maximum number of pages which can be published.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "productType": {
+                    "description": "Package product type", 
+                    "enum": [
+                        "one-off", 
+                        "add-on", 
+                        "subscription", 
+                        "domain"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "showInTemplatePicker": {
+                    "description": "",
+                    "enum": [
+                        "0",
+                        "1"
+                    ],
+                    "required": false,
+                    "location": "json",
+                    "type": "numeric"
+                },
+                "storageLimit": {
+                    "description": "Maximum bytes of file storage offered.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateGroupRef": {
+                    "description": "Template group", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "templateTier": {
+                    "description": "Template tier levels [0, 1 or 2] to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "themeLevel": {
+                    "description": "Theme levels [0 or 1] to permit", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "trialDays": {
+                    "description": "Number of days before demo/trial expires", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "integer"
+                }, 
+                "type": {
+                    "description": "Package type", 
+                    "enum": [
+                        "standard", 
+                        "offer", 
+                        "demo"
+                    ], 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }, 
+                "urlID": {
+                    "description": "Selected redirection when returning to editor after purchase : One of ‘basic’, ‘bulk’, ‘demo’, ‘domain’, ‘plus’, ‘pro’, ‘sme’.", 
+                    "location": "json", 
+                    "required": false, 
+                    "type": "string"
+                }
+            }, 
+            "summary": "Update package with the specified package reference. The package must be accessible and the update method permitted by the caller. Only the provided fields will be updated, all others will remain unchanged.", 
+            "uri": "/packages/{packageRef}"
+        }
+    }
+}
