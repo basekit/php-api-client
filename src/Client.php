@@ -14,8 +14,8 @@ class Client extends GuzzleClient
         $authType  = null;
         if (isset($config['auth_type'])) {
             $authType = $config['auth_type'];
+            unset($config['auth_type']);
         }
-        unset($config['auth_type']);
         if ($authType === AuthType::OAUTH) {
             $required = [
                 'base_url',
