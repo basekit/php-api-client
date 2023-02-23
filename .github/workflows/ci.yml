@@ -1,0 +1,30 @@
+name: Lint and Test
+run-name: ${{ github.actor }} is linting and testing 🚀
+
+on: [push]
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: 💅 Lint
+        run: |
+          make lint
+  Test:
+    strategy:
+      matrix:
+        php-versions: ['8.0', '8.1', '8.2']
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set up PHP ${{ matrix.php-versions }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+      - name: 🧪 Test
+        run: |
+          make test

@@ -1,8 +1,8 @@
 build: lint test
 
 lint: vendor
-	./vendor/bin/phpcs  --standard=PSR2 src/
-	./vendor/bin/phpcs  --standard=PSR2 tests/
+	./vendor/bin/phpcs  --standard=PSR12 src/
+	./vendor/bin/phpcs  --standard=PSR12 tests/
 
 test: vendor
 	./vendor/bin/phpunit

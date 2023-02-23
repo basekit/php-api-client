@@ -1,6 +1,6 @@
 {
-    "name":"BaseKit REST API",
-    "includes":[
+    "name": "BaseKit REST API",
+    "includes": [
         "account-domains.json",
         "brands.json",
         "categories.json",
