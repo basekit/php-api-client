@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 namespace BaseKit\Api;
 
 class AuthType
 {
-    const BASIC = 'BASIC';
-    const OAUTH = 'OAUTH';
+    public const BASIC = 'BASIC';
+    public const OAUTH = 'OAUTH';
 }
