@@ -1,6 +1,7 @@
 {
     "name": "basekit/php-api-client",
     "description": "BaseKit PHP API client.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Simon Best",
