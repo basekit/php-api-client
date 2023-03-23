@@ -157,9 +157,11 @@ class ClientFactoryTest extends TestCase
 
     private function createMockHandler(int $responseCode): HandlerStack
     {
+        $jsonResponse = '"Hello, World! This is a test response."'; // ensure this is valid json
+
         return HandlerStack::create(
             new MockHandler([
-                new Response($responseCode, [], 'Hello, World! This is a test response.'),
+                new Response($responseCode, [], $jsonResponse),
             ])
         );
     }
