@@ -53,7 +53,7 @@ $client = ClientFactory::create([
     'password' => 'bar',
     'handler' => HandlerStack::create(
         new MockHandler([
-            new Response(404, [], 'Hello, World! This is a test response.'),
+            new Response(404, [], '"Hello, World! This is a test response."'),
         ])
     ) ,
 ]);

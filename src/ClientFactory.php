@@ -8,9 +8,14 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GuzzleHttp\Command\Guzzle\Description;
+use GuzzleHttp\Command\Result;
+use GuzzleHttp\Command\ResultInterface;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use GuzzleHttp\Utils;
 use InvalidArgumentException;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class ClientFactory
 {
@@ -48,8 +53,16 @@ class ClientFactory
         $serviceDescription = new Description($serviceDescriptionContents);
 
         return new GuzzleClient(
-            $httpClient,
-            $serviceDescription,
+            client: $httpClient,
+            description: $serviceDescription,
+            responseToResultTransformer: function (
+                ResponseInterface $response,
+                RequestInterface $request
+            ): ResultInterface {
+                return new Result([
+                    'response' => Utils::jsonDecode((string) $response->getBody(), true)
+                ]);
+            }
         );
     }
 
@@ -72,6 +85,7 @@ class ClientFactory
             'token' => $config['token'],
             'token_secret' => $config['token_secret'],
         ]));
+
         $config['handler'] = $stack;
         $config['auth'] = 'oauth';
 
