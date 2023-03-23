@@ -27,9 +27,9 @@ class ClientFactory
 
         return $guzzleClient;
     }
+
     private static function checkRequiredConfigOptions(array $proividedConfig, string $authType): void
     {
-
         $requiredConfigOptions = self::getRequiredConfigOptions($authType);
 
         foreach ($requiredConfigOptions as $requiredConfigOption) {
