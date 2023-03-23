@@ -102,7 +102,12 @@ class ClientFactoryTest extends TestCase
 
         $this->assertTrue($createSite instanceof Command);
 
-        $client->execute($createSite);
+        $result = $client->execute($createSite)->toArray();
+
+        $this->assertEquals(
+            'Hello, World! This is a test response.',
+            $result['response']
+        );
     }
 
     /**
