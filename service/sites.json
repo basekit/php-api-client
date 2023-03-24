@@ -478,14 +478,20 @@
                 "brandRef": {
                     "description": "If the brandRef parameter is provided, the list of sites will be filtered bu this brand only",
                     "location": "query",
+                    "required": true,
+                    "type": "integer"
+                },
+                "limit": {
+                    "description": "Set the number of sites that will be returned in the response. By default, only 10 sites will be returned.",
+                    "location": "query",
                     "required": false,
                     "type": "integer"
                 },
-                "embed": {
-                    "description": "Embed the account holder entity into each site by passing 'accountHolder'.",
+                "offset": {
+                    "description": "Set the offset to the first site to be returned in the response. By default, the first site will be returned.",
                     "location": "query",
                     "required": false,
-                    "type": "string"
+                    "type": "integer"
                 }
             },
             "summary": "Get a list of all sites in the caller’s scope. For an Internal Developer, this will list all sites in the environment.",
