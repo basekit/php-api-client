@@ -37,6 +37,8 @@ $createSite = $client->getCommand(
 $client->execute($createSite);
 ```
 
+A more detailed example script is [available here](https://github.com/basekit/php-api-client-example) including account and site creation and populating a site with content using the API.
+
 ## Testing
 
 Feed an optional `handler` into the config of `clientFactory` to control the responses from the http client.

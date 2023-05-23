@@ -1,7 +1,7 @@
 {
     "operations": {
         "AddSite": {
-            "httpMethod": "POST", 
+            "httpMethod": "POST",
             "parameters": {
                 "siteRef": {
                     "description": "Site reference to be associated with the user.", 
@@ -277,8 +277,19 @@
                     "location": "json", 
                     "required": true, 
                     "type": "string"
+                },
+                "entryFlowComplete": {
+                    "default": 0,
+                    "description": "Set to 1 to bypass BaseKit onboarding process",
+                    "enum": [
+                        "0",
+                        "1"
+                    ],
+                    "location": "json",
+                    "required": false,
+                    "type": "numeric"
                 }
-            }, 
+            },
             "summary": "Create a new user. You need to specify the brand in which to create the user.", 
             "uri": "/users"
         }, 
@@ -1539,6 +1550,50 @@
                     "type": "integer"
                 }
             }
+        },
+        "CreateUploadToken": {
+            "httpMethod": "POST",
+            "parameters": {
+                "userRef": {
+                    "description": "Account holder user reference",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                }
+            },
+            "summary": "Creates a one use file upload token for use with CreateAsset",
+            "uri": "/users/{userRef}/upload-tokens"
+        },
+        "CreateAsset": {
+            "httpMethod": "POST",
+            "parameters": {
+                "userRef": {
+                    "description": "Account holder user reference",
+                    "location": "uri",
+                    "required": true,
+                    "type": "integer"
+                },
+                "siteRef": {
+                    "description": "Site ref",
+                    "location": "multipart",
+                    "required": true,
+                    "type": "integer"
+                },
+                "token": {
+                    "description": "One use upload token obtained from calling the CreateUploadToken command",
+                    "location": "multipart",
+                    "required": true,
+                    "type": "string"
+                },
+                "file": {
+                    "description": "Stream of the file to upload, eg fopen('image.jpg', 'r'); ",
+                    "location": "multipart",
+                    "required": true,
+                    "type": "any"
+                }
+            },
+            "summary": "Upload a file asset",
+            "uri": "/users/{userRef}/assets"
         }
     }
 }

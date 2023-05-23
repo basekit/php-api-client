@@ -59,8 +59,12 @@ class ClientFactory
                 ResponseInterface $response,
                 RequestInterface $request
             ): ResultInterface {
+                $body = (string) $response->getBody();
+                if (!empty($body)) {
+                    $body = Utils::jsonDecode($body, true);
+                }
                 return new Result([
-                    'response' => Utils::jsonDecode((string) $response->getBody(), true)
+                    'response' => $body
                 ]);
             }
         );

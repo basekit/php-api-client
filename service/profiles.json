@@ -28,7 +28,7 @@
                     "required": true, 
                     "type": "integer"
                 }
-            }, 
+            },
             "summary": "Delete profile with the specified reference. The delete method must be permitted by the caller.", 
             "uri": "/users/{userRef}/profiles/{profileRef}"
         }, 
@@ -78,8 +78,14 @@
                     "location": "uri", 
                     "required": true, 
                     "type": "integer"
+                },
+                "fields": {
+                    "description": "Profile fields in name value pairs.",
+                    "location": "json",
+                    "required": true,
+                    "type": "array"
                 }
-            }, 
+            },
             "summary": "Update profile data with the specified profile reference. The update method must be permitted by the caller.", 
             "uri": "/users/{userRef}/profiles/{profileRef}"
         }
