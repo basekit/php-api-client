@@ -319,12 +319,12 @@
                     "location": "json", 
                     "required": false, 
                     "type": "string"
-                }, 
+                },
                 "values": {
                     "description": "Optional widget values for setup (JSON Encoded key => value).", 
                     "location": "json", 
                     "required": false, 
-                    "type": "string"
+                    "type": "array"
                 }, 
                 "widgetRef": {
                     "description": "Widget reference to be updated.", 

@@ -38,6 +38,7 @@
         "plugins/blogs.json",
         "plugins/blogs/categories.json",
         "plugins/blogs/posts.json",
-        "plugins/users/blogs.json"
+        "plugins/users/blogs.json",
+        "sections.json"
     ]
 }

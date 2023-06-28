@@ -1,0 +1,119 @@
+{
+  "operations": {
+    "AddSection": {
+      "summary": "Add a section to a given site page",
+      "uri": "/sites/{siteRef}/pages/{pageRef}/sections",
+      "httpMethod": "POST",
+      "parameters": {
+        "siteRef": {
+          "description": "Site reference to retrieve site.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "pageRef": {
+          "description": "Page reference for adding a new section.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "template": {
+          "description": "ID of the row template to use eg image_text_2a",
+          "location": "json",
+          "required": true,
+          "type": "string"
+        },
+        "siblingRef": {
+          "description": "The sectionRef of the section that the new section is to be positioned relative to. If blank the new section will be added to the end of the main content.",
+          "location": "json",
+          "required": false,
+          "type": "string"
+        },
+        "position": {
+          "description": "Relative position to the sibling section, above or below.",
+          "location": "json",
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "GetSections": {
+      "summary": "Retrieve a list of sections on a given page",
+      "uri": "/sites/{siteRef}/pages/{pageRef}/sections",
+      "httpMethod": "GET",
+      "parameters": {
+        "siteRef": {
+          "description": "Site reference to retrieve site.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "pageRef": {
+          "description": "Page reference for getting all sections.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "DeleteSection": {
+      "summary": "Delete a section, and its child widgets, by the section's sectionRef",
+      "uri": "/sites/{siteRef}/pages/{pageRef}/sections/{sectionRef}",
+      "httpMethod": "DELETE",
+      "parameters": {
+        "siteRef": {
+          "description": "Site reference to retrieve site.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "pageRef": {
+          "description": "Page containing the section to be deleted.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "sectionRef": {
+          "description": "Section reference returned from the AddSection or GetSections calls.",
+          "location": "uri",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "UpdateSectionWidget": {
+      "summary": "Update the data in a widget contained within a section",
+      "uri": "/sites/{siteRef}/pages/{pageRef}/sections/{sectionRef}/widgets/{widgetRef}",
+      "httpMethod": "PUT",
+      "parameters": {
+        "siteRef": {
+          "description": "Site reference to retrieve site.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "pageRef": {
+          "description": "Page containing the section widget to be updated.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        },
+        "sectionRef": {
+          "description": "Section reference returned from the AddSection or GetSections calls containing the widget to update.",
+          "location": "uri",
+          "required": true,
+          "type": "string"
+        },
+        "widgetRef": {
+          "description": "Widget ref to update, returned from the AddSection call.",
+          "location": "uri",
+          "required": true,
+          "type": "integer"
+        }
+      },
+      "additionalParameters": {
+        "location": "json"
+      }
+    }
+  }
+}
